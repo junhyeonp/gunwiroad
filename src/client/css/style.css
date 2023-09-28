@@ -16,7 +16,7 @@ header img { width: 180px; }
 .about_app_texts .sub_title { font-size: 14px; margin: 30px 0 15px ;}
 .about_app_texts .text { font-size: 12px; }
 .about_app_texts ul.text { margin:0 0 20px 20px; list-style: disc; }
-.about_app_texts { display: none; margin-bottom: 130px; }
+.about_app_texts { display: none; margin-bottom: 200px; }
 .about_app_texts.show { display: block; }
 .about_app_texts.app_guideline .title.text { margin-top: 20px; }
 .about_app_texts.app_guideline .sub_text { padding-left: 10px; }
