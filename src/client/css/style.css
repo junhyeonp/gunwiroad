@@ -5,9 +5,17 @@
 
 /* home */
 .home { height: 100vh; background-image: url(../file/home_bg.jpeg); background-repeat: no-repeat; background-position: center; background-size: cover;}
-header { padding: 10px 30px}
-header img {width: 180px;}
-
+.home .grid_container { color: white }
+header { padding: 10px 30px }
+header img { width: 180px; }
+.catchphrase { margin-top: 65px; margin-bottom: 20px;}
+.catchphrase .main_text { line-height: 1.2; font-size: 32px; font-weight: bold; margin-bottom: 10px;}
+.catchphrase .sub_text { font-size: 16px; font-weight: 400;}
+.about_app_texts { width: 100%; padding: 30px; background-color: rgba(0, 0, 0, 0.8);}
+.about_app_texts .main_title { font-size: 20px;  }
+.about_app_texts .sub_title { font-size: 14px; margin: 30px 0 15px ;}
+.about_app_texts .text { font-size: 12px; }
+.about_app_texts .text:last-child { margin-top: 20px; }
 /* login */
 .full-container { position: relative;  width: 100vw; height: 100vh; padding-bottom: 80px; display: flex; justify-content: center; align-items: center; flex-direction: column; }
 .login-form { padding: 20px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); width: 300px; }
