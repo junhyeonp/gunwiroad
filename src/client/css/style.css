@@ -4,7 +4,7 @@
 .splash img.splash_logo { position: absolute; width:200px; left: 50%; top: 50%; transform: translate(-50%, -50%)}
 
 /* home */
-.home { position: relative; padding-bottom: 200px; min-height: 100vh; height: 100%; background-image: url(../file/home_bg.jpeg); background-repeat: no-repeat; background-position: center; background-size: cover;}
+.home { position: relative; padding-bottom: 200px; min-height: calc(var(--vh, 1vh)*100); background-image: url(../file/home_bg.jpeg); background-repeat: no-repeat; background-position: center; background-size: cover;}
 .home .grid_container { color: white; }
 header { padding: 10px 30px }
 header img { width: 180px; }
