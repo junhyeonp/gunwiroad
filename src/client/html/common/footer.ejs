@@ -1,50 +1,45 @@
 <footer class="footer">
-    <ul>
+    <ul id="menu">
         <li>
-            <a href="/">
-                <i class="fas fa-home"></i>
-                <p>홈</p>
+            <a href="/" class="menu-link">
+                <img src="../../file/home_icon.png" alt="">
             </a>
         </li>
         <li>
-            <a href="/introduce">
-                <i class="fas fa-book"></i>
-                <p>소개</p>
+            <a href="/introduce" class="menu-link">
+                <img src="../../file/map_icon.png" alt="">
             </a>
         </li>
         <li>
-            <a href="/course">
-                <i class="fas fa-road"></i>
-                <p>메인</p>
+            <a href="/course" class="menu-link">
+                <img src="../../file/qr_icon.png" alt="">
             </a>
         </li>
         <li>
-            <a href="/qr">
-                <i class="fas fa-qrcode"></i>
-                <p>홈</p>
+            <a href="/qr" class="menu-link">
+                <img src="../../file/stamp_icon.png" alt="">
             </a>
         </li>
         <li>
-            <a href="/profile">
-                <i class="fas fa-user-alt"></i>
-                <p>홈</p>
+            <a href="/profile" class="menu-link">
+                <img src="../../file/myinfo_icon.png" alt="">
             </a>
         </li>
     </ul>
 </footer>
 <script>
-    const addClickStyle = () => {
-        const currentPath = window.location.pathname;
-        const links = document.querySelectorAll(".footer ul li a")
-        
-        links.forEach((link)=>{
-            if(link.getAttribute('href') === currentPath) {
-                link.parentElement.classList.add('on')
-            }
-        })
-    }
-
-    document.addEventListener("DOMContentLoaded",addClickStyle)
+const menuLinks = document.querySelectorAll('.menu-link');
+// JavaScript (script.js)
+window.addEventListener('load', () => {
+    const currentPath = window.location.pathname;
+    menuLinks.forEach((menuLink) => {
+        if (menuLink.getAttribute('href') === currentPath) {
+            menuLink.classList.add('active');
+        } else {
+            menuLink.classList.remove('active');
+        }
+    });
+});
 </script>
 </body>
 </html>
