@@ -98,6 +98,7 @@
         </div>
     </div>
 </div>
+
 <!-- 군위로드란? 버튼 및 이용안내 버튼을 클릭했을 때 해당 텍스트 보여지게 하기 -->
 <script>
     let about_app_btns = document.querySelectorAll('.about_app_btns div')
@@ -116,18 +117,6 @@
 });
 
 </script>
-<!-- 브라우저와 달리 모바일에서는 100vh에 상단 url 입력창과 하단 네비게이션 창을 포함하므로 이를 제외한 스크린 사이즈의 높이를 계산해줘야 함 -->
-<script>
-    function setScreenSize() {
-            let vh = window.innerHeight * 0.01;
 
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
-
-    setScreenSize();
-
-    // 스크린 사이즈가 변할 때마다 실행해줘야 함
-    window.addEventListener('resize', () => setScreenSize());
-</script>
 <%- include('common/footer.ejs') %>
  

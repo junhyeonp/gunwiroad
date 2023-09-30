@@ -30,7 +30,7 @@ const deleteMarkers = () => {
 // 유저 마커 그리기
 const addUserMarker = () => {
     let markerImage = "/file/map_not_done.png";
-    let markerSize = new kakao.maps.Size(24, 35);
+    let markerSize = new kakao.maps.Size(36);
     const image = new kakao.maps.MarkerImage(markerImage, markerSize)
 
     let marker = new kakao.maps.Marker({
@@ -50,11 +50,11 @@ const panTo = (latitude, longitude) => {
 // 코스 마커 그리기
 const addCourseMarker = (course) => {
     let markerImage = "/file/map_not_done.png";
-    let markerSize = new kakao.maps.Size(24, 35);
+    let markerSize = new kakao.maps.Size(36);
     
     if(course.users_course_id) {
         markerImage = "/file/map_complete.jpg";
-        markerSize = new kakao.maps.Size(40, 50);
+        markerSize = new kakao.maps.Size(36);
         
     }
 
