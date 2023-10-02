@@ -29,7 +29,7 @@ const deleteMarkers = () => {
 
 // 유저 마커 그리기
 const addUserMarker = () => {
-    let markerImage = "/file/map_not_done.png";
+    let markerImage = "/file/user_marker.png";
     let markerSize = new kakao.maps.Size(36);
     const image = new kakao.maps.MarkerImage(markerImage, markerSize)
 
@@ -60,22 +60,47 @@ const addCourseMarker = (course) => {
 
     const image = new kakao.maps.MarkerImage(markerImage, markerSize);
     const position = new kakao.maps.LatLng(course.course_latitude, course.course_longitude);
-    new kakao.maps.Marker({
+    let marker = new kakao.maps.Marker({
         map: map,
         position: position,
         title: course.course_name,
         image: image
     })
+
+    // 코스 마커를 클릭했을 때 포커스 이동과 함께 마커 이미지에 dashed 보더가 생김
+    kakao.maps.event.addListener(marker, 'click', function (){
+        var position = this.getPosition();
+        panTo(position.Ma, position.La);
+
+        const markerImages = document.querySelectorAll('#location-map img')
+        markerImages.forEach((img) => {
+            if(img.title === this.Gb) {
+                img.classList.add('focused')
+            } else {
+                img.classList.remove('focused')
+            }
+        })
+    });
 }
 
 const allCourseMarker = () => {
     for (let i = 0; i < courseListInfo.length; i++) {
         addCourseMarker(courseListInfo[i]);
-    }
+    }   
 }
 
 
 const clickCourseList = (e, courseId) => {
+    // 특정 코스를 선택했을 때 마커 이미지에 dashed 보더가 생김
+    const markerImages = document.querySelectorAll('#location-map img')
+    markerImages.forEach((img) => {
+        if(img.title === e.target.innerText) {
+            img.classList.add('focused')
+        } else {
+            img.classList.remove('focused')
+        }
+    })
+
     if (clickCourseID !== courseId) {
         const courseWrap = document.querySelectorAll(".course");
         for (let i = 0; i < courseWrap.length; i++) {
@@ -129,7 +154,7 @@ const makeNavigationHtml = () => {
     const courseWrap = document.getElementById("course-wrap");
     // console.log(courseWrap)
     let html= "";
-
+    /* html += `<li id="myPosition" class="course on" onclick="clickCourseList(event, 0)">나의 위치</li>` */
     for (let i = 0 ; i < courseListInfo.length; i++) {
         html += `<li class="course" onclick="clickCourseList(event, ${courseListInfo[i].course_id})">`
         if (courseListInfo[i].users_course_id) {
@@ -138,11 +163,21 @@ const makeNavigationHtml = () => {
         }
         html += `<p>${courseListInfo[i].course_name}</p>`
         html += `</li>`
-        }
-            // console.log(courseListInfo);
-
-    html += `<li id="myPosition" class="course on" onclick="clickCourseList(event, 0)">나의 위치</li>`
-
+        html += `<li class="course-brief-summary">
+                    <img src="../file/left_arrow.png" class="left-arrow-btn" alt="">
+                    <div class="contents-wrapper">
+                        <img src="../file/hwasan_village.png" class="course-img" alt="">
+                        <div>
+                            <div class="title">${courseListInfo[i].course_name}</div>
+                            <div>해발 828m 산 정산에 고랭지 채소를 주산물로 살아가는 마을</div>
+                        </div>
+                    </div>
+                    <img src="../file/heart_btn.png" class="heart-btn" alt="">
+                    <div class="view-more-btn">자세히보기</div>
+                  </li>`
+    }
+    // console.log(courseListInfo);
+    html += `<div class="course-popup-bar"></div>`
     // console.log(html)
     courseWrap.innerHTML = html;
 }
@@ -165,4 +200,26 @@ const getCourseListFetch = async() => {
     makeNavigationHtml();
 }
 
-getCourseListFetch();
+// 지도가 그려짐과 동시에 ul 태그 안에 코스가 다 담기고 나면 ul 태그 높이를 이용해 지도 높이를 계산함
+getCourseListFetch().then(function() {// 다른 스크립트 실행
+    const course_wrap = document.getElementById("course-wrap");
+    const location_map = document.getElementById("location-map");
+    const course_popup_bar = document.querySelector(".course-popup-bar")
+    
+    location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)`
+    course_popup_bar.style.bottom = `calc(${course_wrap.clientHeight}px + 40px)`
+    
+    // 창 크기가 변함에 따라 코스 리스트가 들어있는 ul 태그의 크기도 변하므로 fixed 되어있는 팝업창 막대의 위치와 지도 크기가 변해야 함
+    window.addEventListener('resize', () =>  { 
+        location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)` 
+        course_popup_bar.style.bottom = `calc(${course_wrap.clientHeight}px + 40px)`
+    })
+
+    // 팝업창 막대를 눌렀을 때 지도 크기가 변함
+    course_popup_bar.addEventListener('click', () => {
+        course_wrap.classList.toggle('hidden')
+        course_popup_bar.style.bottom = `calc(${course_wrap.clientHeight}px + 40px)`
+        location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)` 
+    })  
+})
+

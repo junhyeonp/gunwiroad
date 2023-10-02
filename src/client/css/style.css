@@ -1,5 +1,5 @@
 /* splash */
-.splash { width: 100%; height: 100vh; position: fixed; z-index: 99;}
+.splash { width: 100%; height: 100vh; position: fixed; z-index: 999;}
 .splash img.splash_bg { width: 100%; height: 100%; object-fit: cover; }
 .splash img.splash_logo { position: absolute; width:200px; left: 50%; top: 50%; transform: translate(-50%, -50%)}
 
@@ -41,8 +41,8 @@ header img { width: 180px; }
 .join-form .button-wrap button { padding: 10px 15px; background-color: #FF5733; border: none; color: white; border-radius: 5px; cursor: pointer; }
 
 /* main */
-.main-title { position: absolute; top: 10%; font-size: 30px; font-family: 'yg-jalnan', 'sans-serif'; }
-
+.main-title { position: a; top: 10%; font-size: 30px; font-family: 'yg-jalnan', 'sans-serif'; }
+bsolute
 /* introduce */
 .introduce-title-wrap { color: #a1805f; text-align: center; margin: 0 auto; padding: 30px; font-size: 20px; font-family: 'Pretendard-ExtraBold' !important; letter-spacing: 2px; }
 .introduce-title-wrap p { font-size: 18px; }
@@ -50,12 +50,31 @@ header img { width: 180px; }
 .introduce-content-wrap p { margin-bottom: 10px;}
 
 /* course */
-.course-nav-ul { display: flex; flex-wrap: wrap; position: absolute; width: 100%; bottom: 0;/* padding: 20px 0; margin-bottom: 20px; */ }
-.course-nav-ul .course { position: relative; width: 31%; text-align: center; border: 2px solid; border-radius: 30px; margin: 1%; padding: 1vh 0; font-weight: 500; border-color: rgb(221, 221, 221); background-color: rgb(238, 238, 238); font-family: "Pretendard-Medium"; }
-.course-nav-ul .course.on { border-color: #758cff; background-color: #758cff; color: #fff; }
-.course-nav-ul .course .mark-wrap { position: absolute;  width: 50px; height: 50px; right: 0; top: -10px; z-index: 15; }
-.course-nav-ul .course .mark-wrap img { width: 100%; height: 100%; }
-#location-map { height: 400px; margin:0 auto; }
+.course-nav-ul { display: flex; /* flex-wrap: wrap; */ position: absolute; width: 100%; bottom: 0;/* padding: 20px 0; margin-bottom: 20px; */ border-top: 1px solid rgba(0, 0, 0, 0.1); z-index: 49;}
+.course-nav-ul { /* width: 500px; */ padding: 40px 10px 10px; color: #112031; /* 가로 스크롤 */ overflow: auto; /* white-space: nowrap; */ }
+.course-nav-ul.prevent-scroll { overflow: hidden; min-height: 200px; }
+.course-nav-ul.hidden { height: 60px; overflow: hidden; }
+.course-nav-ul.hidden li { pointer-events: none; }
+.course-nav-ul::-webkit-scrollbar { display: none; }
+.course-nav-ul .course { display: flex; align-items: center; justify-content: center; position: relative; min-width: 28%; height: 80px; text-align: center; /* border: 2px solid; */  border-radius: 50%; margin: 1%; padding: 14% 0; font-weight: 500; /* border-color: rgb(221, 221, 221); */ background-color: rgb(238, 238, 238); font-family: "Pretendard-Medium"; }
+.course-nav-ul .course.on { border-color: #0026e3; background-color: #77c0dd; color: #fff; }
+.course-nav-ul .course .mark-wrap { position: absolute; width: 100%; top: 0; left: 0; z-index: 15; }
+.course-nav-ul .course .mark-wrap img { width: 35%; /* height: 100%; */ position: absolute; top: 0; left: 0;}
+.course-popup-bar { background-clip: content-box; box-sizing: content-box; position: fixed; left: 50%; transform: translateX(-50%); width: 20%; height: 4px; border-radius: 1px; background-color: rgba(0, 0, 0, 0.2); padding: 10px 20px 20px;}
+.course-brief-summary { position: absolute; display: none; justify-content: space-between; width: 100%; height: 100%; left: 0; bottom: 0; padding: 20px; background-color: rgba(0, 0, 0); z-index: 100; color: #fff;}
+.course-brief-summary.show { display: flex; }
+.course-brief-summary img { height: 25px; }
+.course-brief-summary .left-arrow-btn { position: absolute; left: 20px; top: 20px }
+.course-brief-summary .heart-btn { position: absolute; right: 20px; top: 20px }
+.course-brief-summary .view-more-btn { position: absolute; right: 20px; bottom: 20px; padding: 5px 10px; border: 1px solid white; font-size: 12px; }
+.course-brief-summary .contents-wrapper { display: flex; padding: 20px 30px; }
+.course-brief-summary .course-img { height: 80%; margin-right: 20px;}
+.course-brief-summary .title { font-size: 26px; margin-bottom: 20px;}
+#location-map { margin:0 auto; width: 100%; position: relative;}
+#location-map img[src*='/file/map'].focused { border: 2px dashed rgb(255, 0, 0, 0.6) !important; border-radius: 50%;}
+#location-map .myPosition { position: absolute; bottom: 15px; left: 10px; z-index: 99; }
+#location-map .myPosition img { width: 50px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 20px;}
+
 
 /* qr */
 .qr-container { width: 100%; padding-top: 30px;  }

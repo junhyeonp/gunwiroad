@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: 'Pretendard';
 }
@@ -20,7 +24,6 @@ body {
   position: relative;
   width: 100vw;
   min-height: calc(var(--vh, 1vh)*100 - 145px);
-  padding-bottom: 80px;
   /* min-height: calc(100vh - 170px); */
   /* margin-top: 110px; */
 }
@@ -74,7 +77,7 @@ body {
   width: 100%;
   height: 80px;
   box-shadow: 0 -1px 10px 1px rgba(0,0,0,0.4);
-  z-index: 20;
+  z-index: 99;
   background-color: #262014;
   font-family: 'yg-jalnan', 'sans-serif';
 }
