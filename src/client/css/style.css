@@ -4,7 +4,7 @@
 .splash img.splash_logo { position: absolute; width:200px; left: 50%; top: 50%; transform: translate(-50%, -50%)}
 
 /* home */
-.home { position: relative; padding-bottom: 200px; min-height: calc(var(--vh, 1vh)*100); background-image: url(../file/home_bg.jpeg); background-repeat: no-repeat; background-position: center; background-size: cover;}
+.home { position: relative; padding-bottom: 200px; min-height: calc(var(--vh, 1vh)*100); background-image: url(../file/home_bg.jpeg); background-repeat: no-repeat; background-position: center; background-size: cover; background-attachment: fixed;}
 .home .grid_container { color: white; }
 header { padding: 10px 30px; }
 header.border_bottom { border-bottom: 1px solid rgba(0, 0, 0, 0.2);}
@@ -53,6 +53,7 @@ bsolute
 .course-nav-ul { display: flex; /* flex-wrap: wrap; */ position: absolute; width: 100%; bottom: 0;/* padding: 20px 0; margin-bottom: 20px; */ border-top: 1px solid rgba(0, 0, 0, 0.1); z-index: 49;}
 .course-nav-ul { /* width: 500px; */ padding: 40px 10px 10px; color: #112031; /* 가로 스크롤 */ overflow: auto; /* white-space: nowrap; */ }
 .course-nav-ul.prevent-scroll { overflow: hidden; min-height: 200px; }
+.course-nav-ul.prevent-scroll li { min-width: 0; }
 .course-nav-ul.hidden { height: 60px; overflow: hidden; }
 .course-nav-ul.hidden li { pointer-events: none; }
 .course-nav-ul::-webkit-scrollbar { display: none; }

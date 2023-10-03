@@ -5,8 +5,8 @@ export const homeViewController = (request, response) => {
     response.render("home", homeData);
 };
 
-export const introduceViewController = (request, response) => {
-    response.render("introduce");
+export const stampViewController = (request, response) => {
+    response.render("stamp");
 };
 
 export const loginViewController = (request, response) => {

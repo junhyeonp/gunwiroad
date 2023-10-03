@@ -3,7 +3,7 @@ import express from "express";
 import {
     courseController,
     homeViewController,
-    introduceViewController,
+    stampViewController,
     joinViewController,
     loginViewController,
     profileViewController,
@@ -17,7 +17,7 @@ viewRouter.get("/join", joinViewController);
 viewRouter.get("/profile", profileViewController);
 viewRouter.get("/qr", qrViewController);
 viewRouter.get("/course", courseController);
-viewRouter.get("/introduce", introduceViewController);
+viewRouter.get("/stamp", stampViewController);
 viewRouter.get("/", homeViewController);
 
 export default viewRouter;

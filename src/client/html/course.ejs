@@ -15,4 +15,23 @@
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8380a837dd62afdfe7c925166cb3abc8"></script>
 <script src="/js/course.js"></script>
+<script>
+    // 코스에 대해 간략히 설명하는 창에서 뒤로가기 버튼을 클릭했을 때 사라져야 함
+    const clickBackBtn = (e) => { 
+        const location_map = document.getElementById("location-map");
+        const course_wrap = document.getElementById("course-wrap");
+
+        e.target.parentNode.classList.remove('show');
+        course_wrap.classList.remove('prevent-scroll');
+        location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)` 
+    }
+
+    const clickHeartBtn = (e) => {
+        if(e.target.src.includes('white')) {
+            e.target.src = "../file/red_heart_btn.png"
+        } else if(e.target.src.includes('red')) {
+            e.target.src = "../file/white_heart_btn.png"
+        }
+    }
+</script>
 <%- include('common/footer.ejs') %>
