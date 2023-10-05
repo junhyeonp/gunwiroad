@@ -14,10 +14,10 @@ let clickCourseID = 0;
 const drawMap = (latitude, longtitude) => {
     const options = {
         center: new kakao.maps.LatLng(latitude, longtitude),
-        level: 2
+        level: 8
     };
     map = new kakao.maps.Map(locationMap, options)
-    map.setZoomable(false);
+    map.setZoomable(true);
 }
 
 // 마커를 초기화 하는 함수 (유저 마커가 새로 생길 때 기존 것을 지워버리기 위한 용도)
@@ -80,8 +80,10 @@ const addCourseMarker = (course) => {
         markerImages.forEach((img) => {
             if(img.title === courseName) {
                 img.classList.add('focused')
+                img.parentNode.classList.add('z-index')
             } else {
                 img.classList.remove('focused')
+                img.parentNode.classList.remove('z-index')
             }
         })
 
@@ -122,12 +124,14 @@ const allCourseMarker = () => {
 
 const clickCourseList = (e, courseId) => {
     // 특정 코스를 선택했을 때 마커 이미지에 dashed 보더가 생김
-    const markerImages = document.querySelectorAll('#location-map img')
-    markerImages.forEach((img) => {
-        if(img.title === e.target.innerText) {
+    const markerImages = document.querySelectorAll('#location-map img[src*="/file/map"]')
+    markerImages.forEach((img, i) => {
+        if(img.title.replace(/<br\/>/g, '\n') === e.target.innerText) {
             img.classList.add('focused')
+            img.parentNode.classList.add('z-index')
         } else {
             img.classList.remove('focused')
+            img.parentNode.classList.remove('z-index')
         }
     })
 
@@ -193,18 +197,19 @@ const makeNavigationHtml = () => {
             html += `<div class="mark-wrap"><img src="/file/complete.png" /></div>`
         }
         html += `<p>${courseListInfo[i].course_name}</p>`
+        html += `<img class="course-thumbnail" src="../file/course_thumbnail_${i}.png">`
         html += `</li>`
         html += `<li class="course-brief-summary">
                     <img src="../file/left_arrow.png" class="left-arrow-btn" alt="" onclick="clickBackBtn(event)">
                     <div class="contents-wrapper">
-                        <img src="../file/hwasan_village.png" class="course-img" alt="">
+                        <img src="../file/course_thumbnail_${i}.png" class="course-img" alt="">
                         <div>
                             <div class="title">${courseListInfo[i].course_name}</div>
-                            <div>해발 828m 산 정산에 고랭지 채소를 주산물로 살아가는 마을</div>
+                            <div class="sub_text">해발 828m 산 정산에 고랭지 채소를 주산물로 살아가는 마을</div>
                         </div>
                     </div>
                     <img src="../file/white_heart_btn.png" class="heart-btn" alt="" onClick="clickHeartBtn(event)">
-                    <div class="view-more-btn">자세히보기</div>
+                    <a href="/course/detail"><div class="view-more-btn">자세히보기</div></a>
                   </li>`
     }
     // console.log(courseListInfo);

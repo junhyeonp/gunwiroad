@@ -13,9 +13,12 @@
     </header>
     <div class="grid_container">
         <div class="catchphrase">
-            <div class="main_text">
-                군위로드와 </br>
-                함께하는 대구 군위 여행
+            <div class="main_text_wrapper">
+                <div class="main_text">
+                    군위로드와 함께하는</br>
+                    대구 군위 여행
+                </div>
+                <img class="about_app_btn" src="../file/about_app_btn.png" alt="">
             </div>
             <div class="sub_text">
                 QR 사진 찍고 경품 받아가세요!
@@ -23,6 +26,7 @@
         </div>
 
         <div class="about_app_texts about_gunwiroad">
+                <img class="cancel_btn" src="../file/cancel_btn.png" alt="">
                 <div class="title main_title">
                     "환상적인 여정, 군위로드"
                 </div>
@@ -30,91 +34,44 @@
                     군위로드란?
                 </div>
                 <div class="text">
-                    "군위로드"는 군위군의 아름다운 관광지와 역사적 장소를 탐험하며
-                    특별한 여행 경험을 제공하는 스탬프투어 하이브리드 앱입니다.
-                    이 앱을 통해 군위의 다채로운 매력을 발견하고, 스탬프 수집 미션을 통해
-                    독특한 보상을 얻으세요.
+                    "군위로드"는 군위군의 아름다운 관광지와 역사적 장소를 탐험하며 특별한 
+                    여행 경험을 제공하는 스탬프투어 하이브리드 앱입니다.
                 </div>
                 <div class="title sub_title">
-                    주요 기능
+                    이용안내
                 </div>
-                <ul class="text">
-                    <li>스탬프 수집과 탐험: 군위군의 주요 관광 명소를 방문하며 스탬프를 수집하고 탐험하세요.</li>
-                    <li>역사와 문화: 군위의 풍부한 역사와 문화에 대한 흥미로운 정보와 이야기를 만나보세요.</li>
-                    <li>현지 가이드: 현지 가이드와 함께 군위의 숨겨진 보물을 찾아보세요.</li>
-                    <li>자신만의 여행 계획: 원하는 일정에 맞춰 자신만의 스탬프투어 여행 계획을 세워보세요.</li>
-                </ul>
-                <div class="text">
-                    "군위로드" 앱을 통해 군위의 아름다운 자연 경관과 역사적인 유산을 탐험하며, 
-                    흥미로운 스탬프 미션을 완료하여 특별한 경험을 즐기세요.
-                </div>
+                <div class="text">1. 계정 생성 및 로그인</div>
+                <div class="text">2. 스탬프 투어 선택</div>
+                <div class="text">3. 스탬프 수집</div>
+                <div class="text">4. 앱 내 탐험</div>
+                <div class="text">5. 레벨 업</div>
+                <div class="text">6. 특별한 보상</div>
         </div>
 
-        <div class="about_app_texts app_guideline">
-            <div class="title main_title">
-                이용안내
-            </div>
-            <div class="title text">
-                1. 계정 생성 및 로그인    
-            </div>
-            <div class="text sub_text">
-                "군위로드"를 시작하려면 카카오 계정을 생성하고 로그인하세요. 이미 가입한 경우, 로그인을 통해 앱을 시작하세요.
-            </div>
-            <div class="title text">
-                2. 스탬프투어 선택 
-            </div>
-            <div class="text sub_text">
-                원하는 스탬프투어를 선택하고 여행 계획을 만드세요. 각 스탬프투어에는 다양한 관광 명소가 포함되어 있습니다.
-            </div>
-            <div class="title text">
-                3. 스탬프 수집   
-            </div>
-            <div class="text sub_text">
-                스탬프 수집 미션을 시작하고, 관광 명소를 방문하여 스탬프를 획득하세요. 스탬프를 모아 특별한 보상을 얻을 수 있습니다.
-            </div>
-            <div class="title text">
-                4. 앱 내 탐험    
-            </div>
-            <div class="text sub_text">
-                군위의 아름다운 경관과 역사적인 장소를 탐험하며 앱 내에서 제공되는 가이드를 활용하세요.
-            </div>
-            <div class="title text">
-                5. 레벨 업  
-            </div>
-            <div class="text sub_text">
-                모든 스탬프를 수집하여 스탬프투어 미션을 완료하고 레벨을 올려보세요.
-            </div>
-            <div class="title text">
-                6. 특별한 보상    
-            </div>
-            <div class="text sub_text">
-                일정 레벨에 도달하면 특별한 보상을 획득할 수 있습니다. 이를 자세히 확인하세요.
-            </div>
-        </div>
-
-        <div class="about_app_btns">
-            <div>군위로드란?</div>
-            <div>이용안내</div>
-        </div>
     </div>
 </div>
 
 <!-- 군위로드란? 버튼 및 이용안내 버튼을 클릭했을 때 해당 텍스트 보여지게 하기 -->
 <script>
-    let about_app_btns = document.querySelectorAll('.about_app_btns div')
-    let about_app_texts = document.querySelectorAll('.about_app_texts')
+    const about_app_btn = document.querySelector('.about_app_btn')
+    const about_app_texts = document.querySelector('.about_app_texts')
+    const cancel_btn = document.querySelector('.cancel_btn')
 
-    about_app_btns.forEach((btn, i) => {
-    btn.addEventListener("click", () => {
-        about_app_texts[i].classList.toggle('show');
-
-        about_app_btns.forEach((otherBtn, j) => {
-            if (i !== j) {
-                about_app_texts[j].classList.remove('show');
-            }
-        });
+    
+    about_app_btn.addEventListener("click", (event) => {
+        about_app_texts.classList.toggle('show');
+        if(event.target.src.includes("clicked")) {
+            event.target.src = "../file/about_app_btn.png"
+        } else {
+            event.target.src = "../file/clicked_about_app_btn.png"
+        }
+        
     });
-});
+
+    cancel_btn.addEventListener("click", () => {
+        about_app_texts.classList.remove('show');
+        about_app_btn.src = "../file/about_app_btn.png"
+    })
 
 </script>
 

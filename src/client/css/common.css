@@ -6,10 +6,12 @@ body {
   font-family: 'Pretendard';
 }
 
+.z-index {z-index: 1 !important;}
+
 .title { font-weight: bold; }
 
 .grid_container {
-  padding: 0 30px;
+  padding: 0 20px;
 }
 
 .container {

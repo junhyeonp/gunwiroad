@@ -32,3 +32,7 @@ export const qrViewController = (request, response) => {
 export const courseController = (request, response) => {
     response.render("course");
 };
+
+export const detailController = (request, response) => {
+    response.render("detail");
+};
