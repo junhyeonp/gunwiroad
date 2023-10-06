@@ -62,7 +62,7 @@ bsolute
 .course-nav-ul.hidden { height: 60px; overflow: hidden; }
 .course-nav-ul.hidden li { pointer-events: none; }
 .course-nav-ul::-webkit-scrollbar { display: none; }
-.course-nav-ul .course { transition: all 0.2s; display: flex; align-items: center; justify-content: center; position: relative; min-width: 28%; height: 80px; text-align: center; /* border: 2px solid; */  border-radius: 50%; margin: 1%; padding: 14% 0; font-weight: 500; /* border-color: rgb(221, 221, 221); */ background-color: rgb(238, 238, 238); font-family: "Pretendard-Medium"; }
+.course-nav-ul .course { display: flex; align-items: center; justify-content: center; position: relative; min-width: 28%; height: 80px; text-align: center; /* border: 2px solid; */  border-radius: 50%; margin: 1%; padding: 14% 0; font-weight: 500; /* border-color: rgb(221, 221, 221); */ background-color: rgb(238, 238, 238); font-family: "Pretendard-Medium"; }
 .course-nav-ul .course.on { border-color: #0026e3; background: linear-gradient(#77c0dd, #1b2dc8); color: #fff; }
 .course-nav-ul .course-thumbnail { width: 93%; position: absolute; filter: brightness(0.6);}
 .course-nav-ul p { color: #fff; z-index: 99; font-weight: 600; width: 100%; padding: 40% 0; }
