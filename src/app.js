@@ -11,6 +11,7 @@ import viewRouter from "./router/viewRouter";
 import apiRouter from "./router/apiRouter";
 
 const app = express();
+const cors = require('cors');
 
 /* 
     node는 middleware 시스템으로 이루어져있음
