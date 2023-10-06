@@ -86,7 +86,7 @@ bsolute
 .detail-course-img { margin-top: 20px;}
 .detail-course-img img { width: 100%; }
 .course-title { text-align: center; font-size: 30px; padding: 15px 0 25px; border-bottom: 1px solid rgba(0, 0, 0, 0.2);}
-.course-description { padding: 20px 20px 80px;}
+.course-description { padding: 20px 20px 100px;}
 
 /* qr */
 .qr-container { width: 100%; padding-top: 30px;  }

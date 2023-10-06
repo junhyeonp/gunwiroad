@@ -209,7 +209,7 @@ const makeNavigationHtml = () => {
                         </div>
                     </div>
                     <img src="../file/white_heart_btn.png" class="heart-btn" alt="" onClick="clickHeartBtn(event)">
-                    <a href="/course/detail"><div class="view-more-btn">자세히보기</div></a>
+                    <a href="/detail/${i}"><div class="view-more-btn">자세히보기</div></a>
                   </li>`
     }
     // console.log(courseListInfo);
