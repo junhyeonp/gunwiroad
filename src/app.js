@@ -33,7 +33,7 @@ app.set("views", process.cwd() + "/src/client/html");
     console.log("지나갑니다");
     next();
 }); */
-
+app.use(cors());
 app.use("/css", express.static("src/client/css"));
 app.use("/js", express.static("src/client/js"));
 app.use("/file", express.static("src/client/file"));
