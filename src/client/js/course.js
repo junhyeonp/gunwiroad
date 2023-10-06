@@ -205,7 +205,7 @@ const makeNavigationHtml = () => {
                         <img src="../file/course_thumbnail_${i}.png" class="course-img" alt="">
                         <div>
                             <div class="title">${courseListInfo[i].course_name}</div>
-                            <div class="sub_text">해발 828m 산 정산에 고랭지 채소를 주산물로 살아가는 마을</div>
+                            <div class="sub_text">${courseListInfo[i].course_brief_description}</div>
                         </div>
                     </div>
                     <img src="../file/white_heart_btn.png" class="heart-btn" alt="" onClick="clickHeartBtn(event)">
