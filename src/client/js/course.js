@@ -159,11 +159,11 @@ const clickCourseList = (e, courseId) => {
     }
     // 코스를 클릭했을 때 코스에 대해 간략히 설명하는 창 띄우기
     let clickedMarkerIndex = courseListInfo.findIndex(course => course.course_id == courseId);
-        if(clickedMarkerIndex) {
-        const courseBriefSummaryLists = document.querySelectorAll('.course-brief-summary')
-        const course_wrap = document.getElementById("course-wrap");
-        const location_map = document.getElementById("location-map");
-            
+    const courseBriefSummaryLists = document.querySelectorAll('.course-brief-summary')
+    const course_wrap = document.getElementById("course-wrap");
+    const location_map = document.getElementById("location-map");
+        
+    if(clickedMarkerIndex !== -1) {        
         course_wrap.classList.add('prevent-scroll')
         location_map.style.height = `calc(var(--vh, 1vh)*100 - 125px - ${course_wrap.clientHeight}px)` 
         courseBriefSummaryLists.forEach((item, i) => {
@@ -173,7 +173,13 @@ const clickCourseList = (e, courseId) => {
                 item.classList.remove('show')
             }
         })
-    }
+        } else {
+            courseBriefSummaryLists.forEach((item, i) => {
+                course_wrap.classList.remove('prevent-scroll')
+                location_map.style.height = `calc(var(--vh, 1vh)*100 - 125px - ${course_wrap.clientHeight}px)` 
+                item.classList.remove('show')
+            })
+        }
 }
 
 
