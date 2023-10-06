@@ -80,7 +80,7 @@ bsolute
 .course-brief-summary .title { font-size: 24px; margin-bottom: 10px; line-height: 1.15;}
 .course-brief-summary .sub_text { font-size: 14px; }
 #location-map { margin:0 auto; width: 100%; position: relative;}
-#location-map img[src*='/file/map'].focused { border: 3px solid transparent !important; border-radius: 50% !important; background-image: linear-gradient(#fff, #fff), linear-gradient(to right, brown 0%,  orange 100%); background-origin: border-box; background-clip: content-box, border-box; }
+#location-map img[src*='/file/map'].focused { border: 3px solid transparent !important; border-radius: 50% !important; background-image: linear-gradient(#fff, #fff), linear-gradient(to right, #77c0dd 0%, #1b2dc8 100%); background-origin: border-box; background-clip: content-box, border-box; }
 #location-map .myPosition { position: absolute; bottom: 15px; left: 10px; z-index: 99; }
 #location-map .myPosition img { width: 50px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 20px;}
 .detail-course-img { margin-top: 20px;}
