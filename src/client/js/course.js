@@ -227,14 +227,32 @@ const afterGetCourseList = () => {
 }
 
 // 백엔드 서버로 코스정보 요청
-const getCourseListFetch = async() => {
-    const response = await fetch("/api/courses") 
-    const result = await response.json();
-    courseListInfo = result;
-    
-    afterGetCourseList();
-    makeNavigationHtml();
-}
+const getCourseListFetch = async () => {
+    try {
+      const response = await fetch("/api/courses");
+      
+      // 첫 번째 오류 확인: fetch가 성공적으로 수행되었는지 확인
+      if (!response.ok) {
+        console.error("Failed to fetch data");
+        return;
+      }
+      
+      // 서버에서 받은 데이터를 JSON 형식으로 파싱
+      const result = await response.json();
+      
+      // 데이터를 성공적으로 가져왔을 때 처리할 로직
+      courseListInfo = result;
+      
+      // 이후의 작업을 처리하는 함수 호출
+      afterGetCourseList();
+      makeNavigationHtml();
+    } catch (error) {
+      // 두 번째 오류 확인: JSON 파싱 오류
+      console.error("Error parsing JSON:", error);
+      
+      // 처리할 오류 처리 로직 추가
+    }
+  }
 
 // 지도가 그려짐과 동시에 ul 태그 안에 코스가 다 담기고 나면 ul 태그 높이를 이용해 지도 높이를 계산함
 getCourseListFetch().then(function() {// 다른 스크립트 실행
