@@ -7,8 +7,10 @@ const getCourseListFetch = async() => {
 getCourseListFetch().then(() => {
     const stampContainer = document.querySelector('.stamp-container')
     const achievement = document.querySelector('#achievement')
+    const couponAmount = document.querySelector('.coupon-amount')
     const levelNum = document.querySelector('.level-num')
     const barGraph = document.querySelector('.bar-graph')
+
 
     let completedStamps = courseListInfo.filter(function(obj) {
         return obj.users_course_id !== null;
@@ -16,9 +18,11 @@ getCourseListFetch().then(() => {
 
     let stampQuantity = completedStamps.length;
 
-    barGraph.style.width = `${stampQuantity * (100/9)}%`
-
+    couponAmount.innerHTML = `<a href="/profile">
+                                  보유쿠폰<span style="color:red"> ${(stampQuantity >= 1 ? 1 : 0) + Math.floor(stampQuantity / 3) }</span>개
+                              </a>`
     levelNum.innerHTML = stampQuantity
+    barGraph.style.width = `${stampQuantity * (100/9)}%`
     achievement.innerHTML =  `스탬프 ${courseListInfo.length}개 중 ${stampQuantity}개 획득!`
     
     let stampLists = ''
