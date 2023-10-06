@@ -55,8 +55,8 @@ bsolute
 .introduce-content-wrap p { margin-bottom: 10px;}
 
 /* course */
-.course-nav-ul { display: flex; /* flex-wrap: wrap; */ position: absolute; width: 100%; bottom: 0;/* padding: 20px 0; margin-bottom: 20px; */ border-top: 1px solid rgba(0, 0, 0, 0.1); z-index: 49;}
-.course-nav-ul { /* width: 500px; */ padding: 40px 10px 10px; color: #112031; /* 가로 스크롤 */ overflow: auto; /* white-space: nowrap; */ }
+.course-nav-ul { display: flex; position: absolute; width: 100%; bottom: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); z-index: 49; border-radius: 20px 20px 0 0; background-color: white;}
+.course-nav-ul { padding: 40px 10px 10px; color: #112031; /* 가로 스크롤 */ overflow: auto; /* white-space: nowrap; */ }
 .course-nav-ul.prevent-scroll { overflow: hidden; min-height: 200px; }
 .course-nav-ul.prevent-scroll li { min-width: 0; }
 .course-nav-ul.hidden { height: 60px; overflow: hidden; }
@@ -81,7 +81,7 @@ bsolute
 .course-brief-summary .sub_text { font-size: 14px; }
 #location-map { margin:0 auto; width: 100%; position: relative;}
 #location-map img[src*='/file/map'].focused { border: 3px solid transparent !important; border-radius: 50% !important; background-image: linear-gradient(#fff, #fff), linear-gradient(#77c0dd , #1b2dc8 ); background-origin: border-box; background-clip: content-box, border-box; }
-#location-map .myPosition { position: absolute; bottom: 15px; left: 10px; z-index: 99; }
+#location-map .myPosition { position: absolute; bottom: 20px; left: 10px; z-index: 99; }
 #location-map .myPosition img { width: 50px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 20px;}
 .detail-course-img { margin-top: 20px;}
 .detail-course-img img { width: 100%; }

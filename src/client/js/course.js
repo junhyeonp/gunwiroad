@@ -94,7 +94,7 @@ const addCourseMarker = (course) => {
         const location_map = document.getElementById("location-map");
                
         course_wrap.classList.add('prevent-scroll')
-        location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)` 
+        location_map.style.height = `calc(var(--vh, 1vh)*100 - 125px - ${course_wrap.clientHeight}px)` 
         courseBriefSummaryLists.forEach((item, i) => {
             if(i === clickedMarkerIndex) { 
                 item.classList.add('show')
@@ -164,7 +164,7 @@ const clickCourseList = (e, courseId) => {
     const location_map = document.getElementById("location-map");
         
     course_wrap.classList.add('prevent-scroll')
-    location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)` 
+    location_map.style.height = `calc(var(--vh, 1vh)*100 - 125px - ${course_wrap.clientHeight}px)` 
     courseBriefSummaryLists.forEach((item, i) => {
         if(i === clickedMarkerIndex) { 
             item.classList.add('show')
@@ -275,12 +275,12 @@ getCourseListFetch().then(function() {// 다른 스크립트 실행
     const location_map = document.getElementById("location-map");
     const course_popup_bar = document.querySelector(".course-popup-bar")
     
-    location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)`
+    location_map.style.height = `calc(var(--vh, 1vh)*100 - 125px - ${course_wrap.clientHeight}px)`
     course_popup_bar.style.bottom = `calc(${course_wrap.clientHeight}px + 40px)`
     
     // 창 크기가 변함에 따라 코스 리스트가 들어있는 ul 태그의 크기도 변하므로 fixed 되어있는 팝업창 막대의 위치와 지도 크기가 변해야 함
     window.addEventListener('resize', () =>  { 
-        location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)` 
+        location_map.style.height = `calc(var(--vh, 1vh)*100 - 125px - ${course_wrap.clientHeight}px)` 
         course_popup_bar.style.bottom = `calc(${course_wrap.clientHeight}px + 40px)`
     })
 
@@ -288,7 +288,7 @@ getCourseListFetch().then(function() {// 다른 스크립트 실행
     course_popup_bar.addEventListener('click', () => {
         course_wrap.classList.toggle('hidden')
         course_popup_bar.style.bottom = `calc(${course_wrap.clientHeight}px + 40px)`
-        location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)` 
+        location_map.style.height = `calc(var(--vh, 1vh)*100 - 125px - ${course_wrap.clientHeight}px)` 
     })
 })
 
