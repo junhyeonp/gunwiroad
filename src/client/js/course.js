@@ -139,24 +139,39 @@ const clickCourseList = (e, courseId) => {
         const courseWrap = document.querySelectorAll(".course");
         for (let i = 0; i < courseWrap.length; i++) {
             courseWrap[i].classList.remove("on");
-    }
-    e.currentTarget.classList.add("on");
+        }
+        e.currentTarget.classList.add("on");
     
 
-    let courseLatitude;
-    let courseLongitude;
+        let courseLatitude;
+        let courseLongitude;
 
-    if (courseId ===0) {
-        courseLatitude = userLatitude;
-        courseLongitude = userLongitude;
-    } else {
-        let matchedCourse = courseListInfo.find(course => course.course_id === courseId);
-        courseLatitude = matchedCourse.course_latitude;
-        courseLongitude = matchedCourse.course_longitude;
+        if (courseId ===0) {
+            courseLatitude = userLatitude;
+            courseLongitude = userLongitude;
+        } else {
+            let matchedCourse = courseListInfo.find(course => course.course_id === courseId);
+            courseLatitude = matchedCourse.course_latitude;
+            courseLongitude = matchedCourse.course_longitude;
+        }
+        panTo(courseLatitude, courseLongitude);
+        clickCourseID = courseId;
     }
-    panTo(courseLatitude, courseLongitude);
-    clickCourseID = courseId;
-}
+    // 코스를 클릭했을 때 코스에 대해 간략히 설명하는 창 띄우기
+    let clickedMarkerIndex = courseListInfo.findIndex(course => course.course_id == courseId);
+    const courseBriefSummaryLists = document.querySelectorAll('.course-brief-summary')
+    const course_wrap = document.getElementById("course-wrap");
+    const location_map = document.getElementById("location-map");
+        
+    course_wrap.classList.add('prevent-scroll')
+    location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)` 
+    courseBriefSummaryLists.forEach((item, i) => {
+        if(i === clickedMarkerIndex) { 
+            item.classList.add('show')
+        } else {
+            item.classList.remove('show')
+        }
+    })
 }
 
 
