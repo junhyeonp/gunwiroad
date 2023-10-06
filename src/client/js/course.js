@@ -228,11 +228,7 @@ const afterGetCourseList = () => {
 
 // 백엔드 서버로 코스정보 요청
 const getCourseListFetch = async() => {
-    const response = await fetch("/api/courses", {
-        headers: {
-            "Content-Type": "application/json",
-         },
-    }) 
+    const response = await fetch("/api/courses") 
     const result = await response.json();
     courseListInfo = result;
     
@@ -252,7 +248,7 @@ getCourseListFetch().then(function() {// 다른 스크립트 실행
     // 창 크기가 변함에 따라 코스 리스트가 들어있는 ul 태그의 크기도 변하므로 fixed 되어있는 팝업창 막대의 위치와 지도 크기가 변해야 함
     window.addEventListener('resize', () =>  { 
         location_map.style.height = `calc(var(--vh, 1vh)*100 - 145px - ${course_wrap.clientHeight}px)` 
-        course_popup_bar.style.bottom = `calc(s${course_wrap.clientHeight}px + 40px)`
+        course_popup_bar.style.bottom = `calc(${course_wrap.clientHeight}px + 40px)`
     })
 
     // 팝업창 막대를 눌렀을 때 지도 크기가 변함
