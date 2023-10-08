@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-  font-family: 'Pretendard';
+  font-family: 'Pretendard', 'Noto Sans KR';
 }
 
 .z-index {z-index: 1 !important;}

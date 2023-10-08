@@ -13,15 +13,20 @@
     </header>
     <div class="grid_container">
         <div class="catchphrase">
-            <div class="main_text_wrapper">
-                <div class="main_text">
-                    군위로드와 함께하는</br>
-                    대구 군위 여행
-                </div>
-                <img class="about_app_btn" src="../file/about_app_btn.png" alt="">
+            <div class="main_text">
+                군위로드와 함께하는</br>
+                대구 군위 여행
             </div>
             <div class="sub_text">
                 QR 사진 찍고 경품 받아가세요!
+            </div>
+        </div>
+
+        <div class="about_app_btn">
+            <img src="../file/about_app_btn_img.png" alt="">
+            <div>
+                군위로드 이용안내
+                <img src="../file/right_arrow.png" alt="">
             </div>
         </div>
 
@@ -46,6 +51,46 @@
                 <div class="text">4. 앱 내 탐험</div>
                 <div class="text">5. 레벨 업</div>
                 <div class="text">6. 특별한 보상</div>
+
+                <div class="stamp_reward_table">
+                    <div class="title"><span style="color:#FBFF00">인증개수 별</span> 스탬프 리워드</div>
+                    <div class="table_row column_titles">
+                        <div>인증개수</div>
+                        <div>스탬프 리워드</div>
+                    </div>
+                    <div class="table_row">
+                        <div>1</br>
+                            <span class="level">(level 1)</span>
+                        </div>
+                        <div>제휴 업체 할인권</br>
+                            <span class="price">1,000원</span>
+                        </div>
+                    </div>
+                    <div class="table_row">
+                        <div>3</br>
+                            <span class="level">(level 3)</span>
+                        </div>
+                        <div>제휴 업체 할인권</br>
+                            <span class="price">3,000원</span>
+                        </div>
+                    </div>
+                    <div class="table_row">
+                        <div>6</br>
+                            <span class="level">(level 6)</span>
+                        </div>
+                        <div>제휴 업체 할인권</br>
+                            <span class="price">5,000원</span>
+                        </div>
+                    </div>
+                    <div class="table_row">
+                        <div>9</br>
+                            <span class="level">(level 9)</span>
+                        </div>
+                        <div>제휴 업체 할인권</br>
+                            <span class="price">10,000원</span>
+                        </div>
+                    </div>
+                </div>
         </div>
 
     </div>
@@ -60,12 +105,6 @@
     
     about_app_btn.addEventListener("click", (event) => {
         about_app_texts.classList.toggle('show');
-        if(event.target.src.includes("clicked")) {
-            event.target.src = "../file/about_app_btn.png"
-        } else {
-            event.target.src = "../file/clicked_about_app_btn.png"
-        }
-        
     });
 
     cancel_btn.addEventListener("click", () => {

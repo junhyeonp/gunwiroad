@@ -4,29 +4,35 @@
 .splash img.splash_logo { position: absolute; width:200px; left: 50%; top: 50%; transform: translate(-50%, -50%)}
 
 /* home */
-.home_page { position: relative; padding-bottom: 200px; min-height: calc(var(--vh, 1vh)*100); }
+.home_page { position: relative; padding-bottom: 100px; min-height: calc(var(--vh, 1vh)*100); }
 .home_page:before { content: ""; display: block; position: fixed; left: 0; top: 0;  width: 100%; height: 100%; z-index: -10; background: url(../file/home_bg.jpeg) no-repeat center center; background-size: cover; }
 .home_page .grid_container { color: white; }
 header { padding: 10px 30px; z-index: 99; width: 100%; }
 header.brown {  background-color: #fff;  position: absolute; }
 header.border_bottom { border-bottom: 1px solid rgba(0, 0, 0, 0.2);}
 header img { width: 180px; }
-.catchphrase { position: relative;  margin-top: 65px; margin-bottom: 20px;}
+.catchphrase { margin-top: 65px; margin-bottom: 20px;}
 .catchphrase .main_text { line-height: 1.2; font-size: 32px; font-weight: bold; margin-right: 20px;}
+.about_app_btn { display: flex; width: 262px; justify-content: space-between; align-items: center; padding: 10px; font-size: 20px; font-weight: bold; background-color: #262014; opacity: 0.85; border-radius: 100px; margin: 30px 0 30px auto; }
+.about_app_btn img { width: 50px; margin-right: 10px; }
+.about_app_btn div img { width: 10px; margin-left: 10px; }
+.about_app_btn div { display: flex; align-items: center; }
 .catchphrase .sub_text { font-size: 16px; font-weight: 400; margin-top: 10px; }
-.main_text_wrapper img { height: 42px; }
-.main_text_wrapper { display: flex; }
 .about_app_texts { position: relative; display: none;  width: 100%; padding: 50px 30px 30px; background-color: rgba(0, 0, 0, 0.8);}
 .about_app_texts .main_title { font-size: 24px;  }
 .about_app_texts .sub_title { font-size: 18px; margin: 30px 0 15px ;}
 .about_app_texts .text { font-size: 16px; margin-bottom: 10px; line-height: 1.5; padding-left: 10px; }
 .about_app_texts ul.text { margin:0 0 20px 20px; list-style: disc; }
 .about_app_texts.show { display: block; }
-.about_app_btns { position: absolute; right: 30px; bottom: 100px; }
-.about_app_btns div { padding: 0 20px; background-color: rgba(0, 0, 0, 0.8); border-radius: 5px; width: 120px; line-height: 40px; text-align: center;} 
-.about_app_btns div:first-child { margin-bottom: 10px; }
 .about_app_texts .cancel_btn { position: absolute; width: 16px; right: 20px; top: 20px;}
-
+.stamp_reward_table { margin-top: 30px; }
+.stamp_reward_table .title { font-size: 24px; text-align: center; margin-bottom: 20px; }
+.table_row { display: flex; padding: 20px 0 15px; border-bottom: 1px solid white;}
+.table_row:last-child { border: none; }
+.table_row div { width: 50%; text-align: center;}
+.table_row.column_titles { background-color: #D9D9D9; color: #000;  padding: 5px 0; font-size: 14px;}
+.table_row .level { font-size: 14px; }
+.table_row .price { font-weight: bold; }
 
 /* login */
 .full-container { position: relative;  width: 100vw; height: 100vh; padding-bottom: 80px; display: flex; justify-content: center; align-items: center; flex-direction: column; }
@@ -81,7 +87,7 @@ bsolute
 .course-brief-summary .sub_text { font-size: 14px; }
 #location-map { margin:0 auto; width: 100%; position: relative;}
 #location-map img[src*='/file/map'].focused { border: 3px solid transparent !important; border-radius: 50% !important; background-image: linear-gradient(#fff, #fff), linear-gradient(#77c0dd , #1b2dc8 ); background-origin: border-box; background-clip: content-box, border-box; }
-#location-map .myPosition { position: absolute; bottom: 20px; left: 10px; z-index: 99; }
+#location-map .myPosition { position: absolute; bottom: 25px; left: 10px; z-index: 99; }
 #location-map .myPosition img { width: 50px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 20px;}
 .detail-course-img { margin-top: 20px;}
 .detail-course-img img { width: 100%; }
