@@ -5,7 +5,7 @@
 
 /* home */
 .home_page { position: relative; padding-bottom: 100px; min-height: calc(var(--vh, 1vh)*100); }
-.home_page:before { content: ""; display: block; position: fixed; left: 0; top: 0;  width: 100%; height: 100%; z-index: -10; background: url(../file/home_bg.jpeg) no-repeat center center; background-size: cover; }
+.home_page:before { filter: brightness(0.8); content: ""; display: block; position: fixed; left: 0; top: 0;  width: 100%; height: 100%; z-index: -10; background: url(../file/home_bg.jpeg) no-repeat center center; background-size: cover; }
 .home_page .grid_container { color: white; }
 header { padding: 10px 30px; z-index: 99; width: 100%; }
 header.brown {  background-color: #fff;  position: absolute; }
@@ -107,14 +107,38 @@ bsolute
 .current-level { width: 100%; height: 140px; background-color: #fff; border-radius: 10px; padding: 10px; margin-bottom: 20px;}
 .get-coupon { font-size: 14px; display: flex; align-items: center; justify-content: flex-end; }
 .get-coupon img { width: 20px; margin-left: 5px; }
-.level { margin-bottom: 10px; }
-.level .level-num { font-size: 60px; font-weight: bold; margin-left: 5px; }
+.current-level .level { margin-bottom: 10px; }
+.current-level .level .level-num { font-size: 60px; font-weight: bold; margin-left: 5px; }
 .bar-graph-container { position: relative; width: 100%; height: 15px; background-color: #777777; margin: 0 auto; margin-bottom: 5px;}
 .bar-graph { width: 0; transition: all 0.8s; background-color: #D71A17; height: 15px; position: absolute; left: 0; top: 0; }
 .stamp-container { width: 100%; background: #fff; opacity: 0.7; border-radius: 10px; padding: 15px 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px 0;}
 .stamp { display: flex; flex-direction: column; align-items: center; text-align: center;}
 .stamp .stamp-img { width: 80px; margin-bottom: 5px; }
 .stamp .stamp-name { font-size: 14px; font-weight: bold; color: #222; }
+
+/* profile */
+.profile-page { padding-bottom: 100px; }
+.profile { display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: #64411E; border-radius: 4px; color: white; padding: 10px 20px; margin: 20px 0 25px; }
+.profile-info { height: 60px; display: flex; flex-direction: column; justify-content: space-between; }
+.profile-info .name { font-size: 20px; }
+.profile-info .name span { font-size: 24px; font-weight: bold; }
+.profile-img-wrapper img { width: 90px; }
+.myinfo .title { font-size: 20px; margin: 10px 0; }
+.myinfo .item { display: flex; justify-content: space-between; padding: 10px 5px; border-top: 1px solid #dddddd;}
+.myinfo .item-title { display: flex; align-items: center; }
+.myinfo .item-title div { font-size: 14px; }
+.myinfo .item-title img { margin-right: 5px; height: 16px; }
+.myinfo .item .item-rightside img { width: 20px; }
+.item-rightside { display: flex; } 
+.item-rightside .number { font-size: 14px; margin-right: 5px; }
+.coupon-box { display: none; width: 100%; background-color: #D1C6BB; border-radius: 4px; margin: 10px 0 30px; padding: 20px; } 
+.coupon-box.show { display: block; }
+.coupon-box .coupon { width: 100%; max-width: 300px; margin: 0 auto 10px; }
+.coupon-box .coupon:last-child { margin-bottom: 0; }
+.coupon-box .coupon img { width: 100%; }
+.bottom-menu { display: flex; justify-content: space-between; margin-top: 20px; }
+.bottom-menu .item { display: flex; font-size: 14px; align-items: center; }
+.bottom-menu .item img { margin-right: 5px; width: 24px; }
 
 /* users */
 .users-container { display: flex; align-items: center; justify-content: center; flex-direction: column; height: 100%; }
