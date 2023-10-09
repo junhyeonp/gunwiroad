@@ -13,14 +13,20 @@ getCourseListFetch().then(() => {
         return obj.users_course_id !== null;
     });
 
-    let stampQuantity = completedStamps.length;;
+    let stampQuantity = completedStamps.length;
     let calculatedCouponAmount = (stampQuantity >= 1 ? 1 : 0) + Math.floor(stampQuantity / 3)
 
     for(let i = 0; i < calculatedCouponAmount; i++) {
         couponBox.classList.add('show');
         couponBox.innerHTML += `<div class="coupon">
-                                   <img src="../file/coupon_${i}.png" alt="">
-                               </div>`
+                                   <img src="../file/coupon_${i}.png" onclick="openModal('modal${i}')" alt="" >
+                                </div>
+                                <div id="modal${i}" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="closeModal('modal0')">&times;</span>
+                                        <img src="../file/coupon_barcode_${i}.png" alt="">
+                                    </div>
+                                </div>`
     }
     
     couponAmount.innerHTML = `${ calculatedCouponAmount }개`

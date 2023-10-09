@@ -62,4 +62,41 @@
     </div>
 </div>
 <script src="../js/profile.js"></script>
+<script>
+     function openModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "block";
+    }
+
+    // 모달 닫기 함수
+    function closeModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "none";
+    }
+
+    // 모달 외부 클릭 시 모달 닫기
+    window.onclick = function(event) {
+        // 모달 창들의 ID 배열
+        var modalIds = ['modal0', 'modal1', 'modal2', 'modal3'];
+        
+        // 클릭한 요소의 ID가 모달 창 ID 배열에 있는지 확인
+        if (modalIds.includes(event.target.id)) {
+            closeModal(event.target.id);
+        }
+
+        event.stopPropagation();
+    }
+
+    window.addEventListener('touchend', function(event) {
+        // 모달 창들의 ID 배열
+        var modalIds = ['modal0', 'modal1', 'modal2', 'modal3'];
+
+        // 터치한 요소의 ID가 모달 창 ID 배열에 있는지 확인
+        if (modalIds.includes(event.target.id)) {
+            closeModal(event.target.id);
+        }
+        
+        event.stopPropagation();
+    });
+</script>
 <%- include('common/footer.ejs') %>
