@@ -66,12 +66,14 @@
      function openModal(modalId) {
         var modal = document.getElementById(modalId);
         modal.style.display = "block";
+        modal.addEventListener('touchend', stopEventPropagation);
     }
 
     // 모달 닫기 함수
     function closeModal(modalId) {
         var modal = document.getElementById(modalId);
         modal.style.display = "none";
+        modal.removeEventListener('touchend', stopEventPropagation);
     }
 
     // 모달 외부 클릭 시 모달 닫기
@@ -83,8 +85,6 @@
         if (modalIds.includes(event.target.id)) {
             closeModal(event.target.id);
         }
-
-        event.stopPropagation();
     }
 
     window.addEventListener('touchend', function(event) {
@@ -95,8 +95,10 @@
         if (modalIds.includes(event.target.id)) {
             closeModal(event.target.id);
         }
-        
-        event.stopPropagation();
     });
+
+    function stopEventPropagation(event) {
+        event.stopPropagation();
+    }
 </script>
 <%- include('common/footer.ejs') %>
