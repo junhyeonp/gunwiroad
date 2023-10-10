@@ -73,7 +73,7 @@ const drawLine = (begin, end, color) => {
   canvas.beginPath();
   canvas.moveTo(begin.x, begin.y);
   canvas.lineTo(end.x, end.y);
-  canvas.lineWidth = 7;
+  canvas.lineWidth = 3;
   canvas.strokeStyle = color;
   canvas.stroke();
 }
@@ -87,8 +87,8 @@ const tick = () => {
 
       var parentWidth = canvasElement.parentElement.clientWidth;
       var parentHeight = canvasElement.parentElement.clientHeight;
-      canvasElement.height = parentWidth*0.8;
-      canvasElement.width = parentWidth*0.8;
+      canvasElement.height = parentWidth*0.75;
+      canvasElement.width = parentWidth*0.75;
 
       canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
 
