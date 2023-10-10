@@ -14,5 +14,9 @@ getCourseListFetch().then(() => {
     courseTitle.innerHTML = courseListInfo[pageNumber].course_name.replace(/<br\s*\/?>/g, ' ');
     courseImg.src = `../file/course_detail_img_${pageNumber}.png`;
     courseDescription.innerHTML = courseListInfo[pageNumber].course_description;
+})
 
+const previousPage = document.querySelector('.previous-page');
+previousPage.addEventListener('click', () => {
+    window.history.back();
 })

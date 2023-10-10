@@ -22,7 +22,7 @@ getCourseListFetch().then(() => {
                                   보유쿠폰<span style="color:red"> ${(stampQuantity >= 1 ? 1 : 0) + Math.floor(stampQuantity / 3) }</span>개
                               </a>`
     levelNum.innerHTML = stampQuantity
-    barGraph.style.width = `${stampQuantity * (100/9)}%`
+    barGraph.style.width = `${stampQuantity * (100/courseListInfo.length)}%`
     achievement.innerHTML =  `스탬프 ${courseListInfo.length}개 중 ${stampQuantity}개 획득!`
     
     let stampLists = ''

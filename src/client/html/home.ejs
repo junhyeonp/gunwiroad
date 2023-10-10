@@ -99,17 +99,24 @@
 <!-- 군위로드란? 버튼 및 이용안내 버튼을 클릭했을 때 해당 텍스트 보여지게 하기 -->
 <script>
     const about_app_btn = document.querySelector('.about_app_btn')
+    const about_app_btn_img = document.querySelector('.about_app_btn > img')
     const about_app_texts = document.querySelector('.about_app_texts')
     const cancel_btn = document.querySelector('.cancel_btn')
 
-    
+    console.log(about_app_btn_img.src)
     about_app_btn.addEventListener("click", (event) => {
         about_app_texts.classList.toggle('show');
+        if(about_app_btn_img.src.includes('clicked')) {
+            about_app_btn_img.src = "../file/about_app_btn_img.png"
+        } else {
+            about_app_btn_img.src = "../file/clicked_about_app_btn_img.png"
+        }
+
     });
 
     cancel_btn.addEventListener("click", () => {
         about_app_texts.classList.remove('show');
-        about_app_btn.src = "../file/about_app_btn.png"
+        about_app_btn_img.src = "../file/about_app_btn_img.png";
     })
 
 </script>

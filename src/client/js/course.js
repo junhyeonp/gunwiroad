@@ -54,7 +54,7 @@ const addCourseMarker = (course) => {
     let markerSize = new kakao.maps.Size(36);
     
     if(course.users_course_id) {
-        markerImage = "/file/map_complete.jpg";
+        markerImage = "/file/map_complete.png";
         markerSize = new kakao.maps.Size(36);
         
     }
@@ -282,6 +282,9 @@ getCourseListFetch().then(function() {// 다른 스크립트 실행
     const course_wrap = document.getElementById("course-wrap");
     const location_map = document.getElementById("location-map");
     const course_popup_bar = document.querySelector(".course-popup-bar")
+
+    const stamp_number = document.querySelector(".stamp-number")
+    const total_stamp_number = document.querySelector(".total-stamp-number")
     
     location_map.style.height = `calc(var(--vh, 1vh)*100 - 125px - ${course_wrap.clientHeight}px)`
     course_popup_bar.style.bottom = `calc(${course_wrap.clientHeight}px + 40px)`
@@ -298,5 +301,15 @@ getCourseListFetch().then(function() {// 다른 스크립트 실행
         course_popup_bar.style.bottom = `calc(${course_wrap.clientHeight}px + 40px)`
         location_map.style.height = `calc(var(--vh, 1vh)*100 - 125px - ${course_wrap.clientHeight}px)` 
     })
+
+    // 지도 오른쪽 밑 스탬프 총 개수 대비 달성 개수 표시
+    let completedStamps = courseListInfo.filter(function(obj) {
+        return obj.users_course_id !== null;
+    });
+
+    let stampNumber = completedStamps.length;
+
+    stamp_number.innerHTML = stampNumber;
+    total_stamp_number.innerHTML = courseListInfo.length
 })
 

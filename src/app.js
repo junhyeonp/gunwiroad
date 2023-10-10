@@ -29,6 +29,9 @@ app.set("view engine", "ejs");
 // ejs의 파일의 위치는 이 프로젝트의 src 폴더에 client 폴더에 html 폴더 안에 있어
 app.set("views", process.cwd() + "/src/client/html");
 
+// json 데이터 파싱 미들웨어
+app.use(express.json());
+
 // 미들웨어
 /* app.use((request, response, next) => {
     console.log("지나갑니다");
