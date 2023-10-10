@@ -10,7 +10,6 @@ getCourseListFetch().then(() => {
     const courseImg = document.querySelector('.detail-course-img img');
     const courseTitle = document.querySelector('.course-title');
     const courseDescription = document.querySelector('.course-description');
-    console.log(courseListInfo);
     
     courseTitle.innerHTML = courseListInfo[pageNumber].course_name.replace(/<br\s*\/?>/g, ' ');
     courseImg.src = `../file/course_detail_img_${pageNumber}.png`;
