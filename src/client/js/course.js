@@ -51,7 +51,7 @@ const panTo = (latitude, longitude) => {
 // 코스 마커 그리기
 const addCourseMarker = (course) => {
     let markerImage = "/file/map_not_done.png";
-    let markerSize = new kakao.maps.Size(36);
+    let markerSize = new kakao.maps.Size(26);
     
     if(course.users_course_id) {
         markerImage = "/file/map_complete.png";
