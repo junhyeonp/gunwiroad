@@ -34,7 +34,7 @@ getCourseListFetch().then(() => {
                                 </div>
                                 <div id="modal${i}" class="modal">
                                     <div class="modal-content">
-                                        <span class="close" onclick="closeModal('modal0')">&times;</span>
+                                        <span class="close" onclick="closeModal('modal${i}')">&times;</span>
                                         <img src="../file/coupon_barcode_${i}.png" alt="">
                                     </div>
                                 </div>`
