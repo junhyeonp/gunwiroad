@@ -102,10 +102,10 @@ const addCourseMarker = (course) => {
                 item.classList.remove('show')
             }
         })
-
+        
         // 마커 클릭 시 해당 course list에도 반영하기 위함
         courseWrap.forEach((course, i) => {
-            if(course.lastChild.innerText === courseName) {
+            if(course.lastChild.innerText === courseName.replace(/<br \/>/g, '\n')) {
                 course.classList.add("on");
                 clickCourseID = i + 1;
             } else {
@@ -224,8 +224,8 @@ const makeNavigationHtml = () => {
             // console.log("들어옴")
             html += `<div class="mark-wrap"><img src="/file/complete.png" /></div>`
         }
-        html += `<p>${courseListInfo[i].course_name}</p>`
         html += `<img class="course-thumbnail" src="../file/course_thumbnail_${i}.png">`
+        html += `<p>${courseListInfo[i].course_name}</p>`
         html += `</li>`
         html += `<li class="course-brief-summary">
                     <img src="../file/left_arrow.png" class="left-arrow-btn" alt="" onclick="clickBackBtn(event)">
