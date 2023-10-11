@@ -126,9 +126,11 @@ img.qr-box { width: 85%; position: absolute; max-width: 550px;}
 /* profile */
 .profile-page { padding-bottom: 110px; position: relative; min-height: calc(var(--vh, 1vh)*100 - 80px); }
 .profile { display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: #64411E; border-radius: 4px; color: white; padding: 10px 20px; margin: 20px 0 25px; }
-.profile-info { height: 60px; display: flex; flex-direction: column; justify-content: space-between; }
+.profile-info { /* height: 60px; */ display: flex; flex-direction: column; justify-content: space-between; }
 .profile-info .name { font-size: 20px; }
 .profile-info .name span { font-size: 24px; font-weight: bold; }
+.profile-info .name { margin-bottom: 20px; }
+.logout-btn { background-color: white; color: #333; width: 60%; text-align: center; border-radius: 5px; padding: 5px 0;}
 .profile-img-wrapper img { width: 90px; border-radius: 50%; }
 .myinfo .title { font-size: 20px; margin: 10px 0; }
 .myinfo .item { display: flex; justify-content: space-between; padding: 10px 5px; border-top: 1px solid #dddddd;}
