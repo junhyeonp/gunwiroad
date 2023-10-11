@@ -129,7 +129,7 @@ img.qr-box { width: 85%; position: absolute; max-width: 550px;}
 .profile-info { height: 60px; display: flex; flex-direction: column; justify-content: space-between; }
 .profile-info .name { font-size: 20px; }
 .profile-info .name span { font-size: 24px; font-weight: bold; }
-.profile-img-wrapper img { width: 90px; }
+.profile-img-wrapper img { width: 90px; border-radius: 50%; }
 .myinfo .title { font-size: 20px; margin: 10px 0; }
 .myinfo .item { display: flex; justify-content: space-between; padding: 10px 5px; border-top: 1px solid #dddddd;}
 .myinfo .item-title { display: flex; align-items: center; }

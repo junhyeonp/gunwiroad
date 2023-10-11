@@ -43,3 +43,34 @@ getCourseListFetch().then(() => {
     couponAmount.innerHTML = `${ calculatedCouponAmount }개`
     levelNum.innerHTML = stampQuantity
 })
+
+const checkUserInfo = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+    const userName = document.querySelector('.user-name')
+    const profileImg = document.querySelector('.profile-img')
+    console.log(userName)
+    console.log(profileImg.src)
+   /*  if (!accessToken) {
+        notLoginHtml();
+        return;
+    } */
+    const response = await fetch("/api/token/check", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+        }
+    });
+    const result = await response.json();
+    userName.innerHTML = result.user_name;
+    profileImg.src = result.user_image ? result.user_image : "../file/profile_img.png"
+    console.log(result);
+
+    if(response.status === 200) {
+       /*  loginHtml(result); */
+    } else {
+        /* notLoginHtml(); */
+    }
+}
+checkUserInfo();
