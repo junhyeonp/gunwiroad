@@ -14,7 +14,7 @@ let clickCourseID = 0;
 const drawMap = (latitude, longtitude) => {
     const options = {
         center: new kakao.maps.LatLng(latitude, longtitude),
-        level: 8
+        level: 10
     };
     map = new kakao.maps.Map(locationMap, options)
     map.setZoomable(true);
@@ -51,7 +51,7 @@ const panTo = (latitude, longitude) => {
 // 코스 마커 그리기
 const addCourseMarker = (course) => {
     let markerImage = "/file/map_not_done.png";
-    let markerSize = new kakao.maps.Size(26);
+    let markerSize = new kakao.maps.Size(36);
     
     if(course.users_course_id) {
         markerImage = "/file/map_complete.png";
@@ -125,6 +125,7 @@ const allCourseMarker = () => {
 const clickCourseList = (e, courseId) => {
     // 특정 코스를 선택했을 때 마커 이미지에 dashed 보더가 생김
     const markerImages = document.querySelectorAll('#location-map img[src*="/file/map"]')
+
     markerImages.forEach((img, i) => {
         if(img.title.replace(/<br \/>/g, '\n') === e.target.innerText) {
             img.classList.add('focused')
@@ -141,7 +142,8 @@ const clickCourseList = (e, courseId) => {
             courseWrap[i].classList.remove("on");
         }
         e.currentTarget.classList.add("on");
-    
+        
+        
 
         let courseLatitude;
         let courseLongitude;
@@ -180,6 +182,9 @@ const clickCourseList = (e, courseId) => {
                 item.classList.remove('show')
             })
         }
+
+        // 코스 리스트 스크롤 위치 기억하기 
+        localStorage.setItem('scrollPosition', scroll_position);
 }
 
 
@@ -251,30 +256,23 @@ const afterGetCourseList = () => {
 
 // 백엔드 서버로 코스정보 요청
 const getCourseListFetch = async () => {
-    try {
-      const response = await fetch("/api/courses");
-      
-      // 첫 번째 오류 확인: fetch가 성공적으로 수행되었는지 확인
-      if (!response.ok) {
-        console.error("Failed to fetch data");
-        return;
-      }
-      
-      // 서버에서 받은 데이터를 JSON 형식으로 파싱
-      const result = await response.json();
-      
-      // 데이터를 성공적으로 가져왔을 때 처리할 로직
-      courseListInfo = result;
-      
-      // 이후의 작업을 처리하는 함수 호출
-      afterGetCourseList();
-      makeNavigationHtml();
-    } catch (error) {
-      // 두 번째 오류 확인: JSON 파싱 오류
-      console.error("Error parsing JSON:", error);
-      
-      // 처리할 오류 처리 로직 추가
+    const accessToken = localStorage.getItem("accessToken");
+    if(!accessToken) {
+        window.location.href = "/login?error=need_login";
     }
+    const response = await fetch("/api/courses", {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    });
+    if(response.status === 401) {
+        return window.location.href = "/login?error=need_login"
+    }
+    const result = await response.json();
+    courseListInfo = result;
+    
+    afterGetCourseList();
+    makeNavigationHtml();
   }
 
 // 지도가 그려짐과 동시에 ul 태그 안에 코스가 다 담기고 나면 ul 태그 높이를 이용해 지도 높이를 계산함

@@ -15,53 +15,65 @@ const getCurrentPosition = () => {
 }
 
 const courseCheckFetch = async (qrCode) => {
-  // TODO 로그인 여부체크 
-
-  console.log(qrCode)
-  // qrCode 올바른 데이터인지
-  if(!qrCode) {
-      msgAlert("bottom", "잘못된 QR코드입니다", "error");
-      setTimeout(startScan, 3000);
-      return;
-  }
-
-  // 내가 찍은 위치정보 가져오기
-  const currentPosition = await getCurrentPosition();
-  const coords = currentPosition.coords;
-  if(!coords) {
-      msgAlert("bottom", "위치정보 오류", "error");
-      setTimeout(startScan, 3000);
-      return;
-  }
-  console.log('성공')
-
-  // 서버전송
-  // qr코드, 현재 사용자 위치정보(latitude, longitude)
-  const response = await fetch('/api/courses', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          // TODO 로그인 토큰
-      },
-      body: JSON.stringify({
-          qrCode: qrCode, 
-          latitude: coords.latitude,
-          longitude: coords.longitude,
+      // TODO 로그인 여부체크 
+      const accessToken = localStorage.getItem("accessToken");
+      if(!accessToken) {
+          window.location.href = "/login?error=need_login";
+      }
+  
+      console.log(qrCode)
+      // qrCode 올바른 데이터인지
+      if(!qrCode) {
+          msgAlert("bottom", "잘못된 QR코드입니다", "error");
+          setTimeout(startScan, 3000);
+          return;
+      }
+  
+      // 내가 찍은 위치정보 가져오기
+      const currentPosition = await getCurrentPosition();
+      const coords = currentPosition.coords;
+      if(!coords) {
+          msgAlert("bottom", "위치정보 오류", "error");
+          setTimeout(startScan, 3000);
+          return;
+      }
+      console.log('성공')
+  
+      // 서버전송
+      // qr코드, 현재 사용자 위치정보(latitude, longitude)
+      const response = await fetch('/api/courses', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+              Authorization: `Bearer ${accessToken}`
+              // TODO 로그인 토큰
+          },
+          body: JSON.stringify({
+              qrCode: qrCode, 
+              latitude: coords.latitude,
+              longitude: coords.longitude,
+          })
       })
-  })
-  const result = await response.json()
-  console.log(result); 
-  console.log(response);
-  if(response.status === 201) {
-      msgAlert("center", "방문 완료", "success");
-     /*  setTimeout(() => {
-          window.location.href = '/course';
-      }, 1000) */
-  } else {
-      msgAlert("center", result.status, "error");
-  }
-  setTimeout(startScan, 3000)
+      const result = await response.json()
+  
+      if(response.status === 201) {
+          msgAlert("center", "방문 완료", "success");
+          return setTimeout(() => {
+              window.location.href = "/course"
+          }, 3000)
+         /*  setTimeout(() => {
+              window.location.href = '/course';
+          }, 1000) */
+      } else if(response.status === 401) {
+          msgAlert("center", result.status, "error");
+          return setTimeout(() => {
+              window.location.href = "/login?error=need_login"
+          }, 3000);
+      } else {
+          msgAlert("center", result.status, "error");
+      }
+      setTimeout(startScan, 3000)
 }
 
 const startScan= () => {

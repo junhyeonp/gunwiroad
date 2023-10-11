@@ -13,6 +13,10 @@ export const loginViewController = (request, response) => {
     response.render("login");
 };
 
+export const loginCallbackController = (request, response) => {
+    response.render("loginCallback");
+};
+
 export const joinViewController = (request, response) => {
     response.render("join");
 };
@@ -36,3 +40,4 @@ export const courseController = (request, response) => {
 export const detailController = (request, response) => {
     response.render("detail");
 };
+

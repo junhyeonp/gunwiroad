@@ -9,6 +9,7 @@ import {
     profileViewController,
     qrViewController,
     detailController,
+    loginCallbackController,
 } from "../controller/viewController";
 
 const viewRouter = express.Router();
@@ -27,5 +28,6 @@ viewRouter.get('/detail/:pageNumber', (req, res) => {
       pageNumber: pageNumber,
     });
   });
+viewRouter.get("/login/callback", loginCallbackController);
 
 export default viewRouter;

@@ -22,6 +22,13 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8380a837dd62afdfe7c925166cb3abc8"></script>
 <script src="/js/course.js"></script>
 <script>
+    const course_wrap = document.getElementById("course-wrap");
+    let scroll_position = 0;
+    
+    course_wrap.addEventListener('scroll', function() {
+            scroll_position = course_wrap.scrollLeft;
+    });
+
     // 코스에 대해 간략히 설명하는 창에서 뒤로가기 버튼을 클릭했을 때 사라져야 함
     const clickBackBtn = (e) => { 
         const location_map = document.getElementById("location-map");
@@ -30,6 +37,11 @@
         e.target.parentNode.classList.remove('show');
         course_wrap.classList.remove('prevent-scroll');
         location_map.style.height = `calc(var(--vh, 1vh)*100 - 125px - ${course_wrap.clientHeight}px)` 
+
+        let savedScrollPosition = localStorage.getItem('scrollPosition');
+        if (savedScrollPosition) {
+            course_wrap.scrollLeft = savedScrollPosition;
+        }
     }
 
     const clickHeartBtn = (e) => {
