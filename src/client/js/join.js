@@ -19,7 +19,7 @@ const joinFetch = async () => {
     const userName = userNameInput.value;
 
     if(!userId || !userPassword || !userName) {
-        msgAlert("bottom", "모든 필드를 채워주세요", "error");
+        return msgAlert("bottom", "모든 필드를 채워주세요", "error");
     }
 
     const response = await fetch("/api/join", {

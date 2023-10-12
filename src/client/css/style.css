@@ -35,17 +35,19 @@ header img { width: 180px; }
 .table_row .price { font-weight: bold; }
 
 /* login */
-.full-container { position: relative;  width: 100vw; height: 100vh; padding-bottom: 80px; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+.header-black { background-color: #000; }
+.full-container { position: relative;  width: 100vw; height: calc(var(--vh, 1vh)*100 - 80px); display: flex; align-items: center; flex-direction: column; }
 .login-form { padding: 20px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); width: 300px; }
 .login-form input[type="text"], .login-form input[type="password"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
 .login-form .button-wrap { display: flex; align-items: center; justify-content: space-between;}
 .login-form .button-wrap button { padding: 10px 15px; background-color: #007BFF; border: none; color: white; border-radius: 5px; cursor: pointer; }
 .login-form .button-wrap button.join { background-color: #FF5733; }
-.kakao-login-button-wrap { width: 228px; height: 54px; margin-top: 25px; }
-.kakao-login-button-wrap img { width: 100%; height: 100%; }
+.kakao-login-button-wrap { width: 228px; height: 54px; margin-top: 25px; text-align: center; }
+.kakao-login-button-wrap img { width: 80%; /* width: 100%; height: 100%;  */}
+.good {justify-self: center; margin: auto 0; display: flex; align-items: center; flex-direction: column;}
 
 /* join */
-.join-form { padding: 20px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); width: 300px; }
+.join-form { margin: auto 0; padding: 20px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); width: 300px; }
 .join-form input[type="text"], .join-form input[type="password"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
 .join-form .button-wrap { display: flex; align-items: center; justify-content: flex-end;}
 .join-form .button-wrap button { padding: 10px 15px; background-color: #FF5733; border: none; color: white; border-radius: 5px; cursor: pointer; }
