@@ -26,7 +26,7 @@ const getParameterByName = (name, url) => {
 const errorMessage = getParameterByName("error");
 
 if(errorMessage === "need_login") {
-    msgAlert("bottom", "인증 만료", "error");
+    msgAlert("bottom", "로그인이 필요합니다", "error");
 } else if(errorMessage === "sns_login_fail") {
     msgAlert("bottom", "SNS 로그인 실패", "error");
 }

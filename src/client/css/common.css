@@ -6,6 +6,11 @@ body {
   font-family: 'Pretendard', 'Noto Sans KR';
 }
 
+.swal2-container {
+  width: 300px !important;
+}
+
+
 .z-index {z-index: 1 !important;}
 
 .title { font-weight: bold; }
