@@ -55,7 +55,7 @@ const loginFetch =  async () => {
     
     if(response.status === 200) {
         localStorage.setItem("accessToken", result.accessToken);
-        msgAlert("center", "로그인 성공", "success")
+        /* msgAlert("center", "로그인 성공", "success") */
         setTimeout(() => {
             window.location.href = "/";
         }, 1000)
