@@ -69,7 +69,7 @@ bsolute
 .course-nav-ul.prevent-scroll { overflow: hidden; min-height: 200px; }
 .course-nav-ul.prevent-scroll li { min-width: 0; }
 .course-nav-ul.hidden { height: 60px; overflow: hidden; }
-.course-nav-ul.hidden li { pointer-events: none; }
+.course-nav-ul.hidden li.course { pointer-events: none; }
 .course-nav-ul::-webkit-scrollbar { display: none; }
 .course-nav-ul .course { display: flex; align-items: center; justify-content: center; position: relative; min-width: 28%; height: 80px; text-align: center; border-radius: 50%; margin: 1%; padding: 14% 0; font-weight: 500; background-color: rgb(238, 238, 238); font-family: "Pretendard-Medium"; }
 .course-nav-ul .course.on { border-color: #0026e3; background: linear-gradient(#77c0dd, #1b2dc8); color: #fff; }
@@ -78,12 +78,13 @@ bsolute
 .course-nav-ul .course .mark-wrap { position: absolute; width: 100%; top: -20%; left: 0; z-index: 15; }
 .course-nav-ul .course .mark-wrap img { width: 100%; opacity: 0.8; }
 .course-popup-bar { /* background-clip: content-box; box-sizing: content-box; */ position: fixed; left: 50%; transform: translateX(-50%); /* width: 20%; height: 4px; border-radius: 1px; background-color: rgba(0, 0, 0, 0.2); */ padding: 10px 30px 30px;}
-.course-popup-bar img { width: 23px; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%) }
+.course-popup-bar img { transition: all 0.2s; width: 23px; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%) }
+.course-popup-bar img.rotate { transform: translate(-50%, -50%) scaleY(-1);}
 .course-brief-summary { position: absolute; display: none; justify-content: space-between; width: 100%; height: 100%; left: 0; bottom: 0; padding: 20px; background-color: rgba(0, 0, 0); z-index: 100; color: #fff;}
 .course-brief-summary.show { display: flex; }
 .course-brief-summary img { height: 25px; }
-.course-brief-summary .left-arrow-btn { position: absolute; left: 20px; top: 20px }
-.course-brief-summary .heart-btn { position: absolute; right: 20px; top: 20px }
+.course-brief-summary .left-arrow-btn { position: absolute; left: 20px; top: 20px; }
+.course-brief-summary .heart-btn { position: absolute; right: 20px; top: 20px; }
 .course-brief-summary .view-more-btn { position: absolute; right: 20px; bottom: 10px; padding: 5px 10px; border: 1px solid white; font-size: 12px; }
 .course-brief-summary .contents-wrapper { display: flex; padding: 20px 30px; }
 .course-brief-summary .course-img { height: 80%; margin-right: 20px;}

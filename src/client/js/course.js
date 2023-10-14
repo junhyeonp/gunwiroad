@@ -318,6 +318,11 @@ getCourseListFetch().then(function() {// 다른 스크립트 실행
 
     stamp_number.innerHTML = stampNumber;
     total_stamp_number.innerHTML = courseListInfo.length
+
+    // 팝업창을 클릭했을 때 화살표가 180도 회전
+    const popupBtnWrap = document.querySelector('.course-popup-bar');
+    const popupBtn = document.querySelector('.course-popup-bar img');
+    popupBtnWrap.addEventListener('click', () => { popupBtn.classList.toggle('rotate')})
 })
 
 const getCourseListFetch2 = async (course) => {
