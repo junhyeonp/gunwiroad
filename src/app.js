@@ -56,6 +56,6 @@ app.use("/api", apiRouter);
     192.168.0.69:8080
 */
 
-app.listen(8080, () => {
-    console.info("8080 포트 서버 열림 http://localhost:8080");
+app.listen(7070, () => {
+    console.info("7070 포트 서버 열림 http://localhost:7070");
 });

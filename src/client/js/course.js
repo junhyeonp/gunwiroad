@@ -241,7 +241,7 @@ const makeNavigationHtml = () => {
                   </li>`
     }
     // console.log(courseListInfo);
-    html += `<div class="course-popup-bar"></div>`
+    html += `<div class="course-popup-bar"><img src="../file/course_popup_bar.png"></div>`
     // console.log(html)
     courseWrap.innerHTML = html;
 }

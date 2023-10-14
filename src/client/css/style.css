@@ -77,7 +77,8 @@ bsolute
 .course-nav-ul p { color: #fff; z-index: 99; font-weight: 600; width: 100%; padding: 40% 0; }
 .course-nav-ul .course .mark-wrap { position: absolute; width: 100%; top: -20%; left: 0; z-index: 15; }
 .course-nav-ul .course .mark-wrap img { width: 100%; opacity: 0.8; }
-.course-popup-bar { background-clip: content-box; box-sizing: content-box; position: fixed; left: 50%; transform: translateX(-50%); width: 20%; height: 4px; border-radius: 1px; background-color: rgba(0, 0, 0, 0.2); padding: 10px 20px 20px;}
+.course-popup-bar { /* background-clip: content-box; box-sizing: content-box; */ position: fixed; left: 50%; transform: translateX(-50%); /* width: 20%; height: 4px; border-radius: 1px; background-color: rgba(0, 0, 0, 0.2); */ padding: 10px 30px 30px;}
+.course-popup-bar img { width: 23px; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%) }
 .course-brief-summary { position: absolute; display: none; justify-content: space-between; width: 100%; height: 100%; left: 0; bottom: 0; padding: 20px; background-color: rgba(0, 0, 0); z-index: 100; color: #fff;}
 .course-brief-summary.show { display: flex; }
 .course-brief-summary img { height: 25px; }
