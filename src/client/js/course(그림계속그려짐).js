@@ -6,7 +6,6 @@ let userLatitude;
 let userLongitude;
 let currentLatitude;
 let currentLongitude;
-let allMarkers = [];
 
 // TODO 추후 사라질 수 있음
 let courseListInfo = [];
@@ -55,7 +54,7 @@ const addCourseMarker = (course) => {
     let markerImage = "/file/map_not_done.png";
     let markerSize = new kakao.maps.Size(36);
 
-    if(course.id !== null) { 
+    if(course.id) {
         markerImage = "/file/map_favorite.png";
         markerSize = new kakao.maps.Size(36);
     }
@@ -74,7 +73,6 @@ const addCourseMarker = (course) => {
         title: course.course_name,
         image: image
     })
-    allMarkers.push(marker)
 
     // 코스 마커를 클릭했을 때 포커스 이동과 함께 마커 이미지에 dashed 보더가 생김
     kakao.maps.event.addListener(marker, 'click', function (){
@@ -128,6 +126,7 @@ const allCourseMarker = () => {
         addCourseMarker(courseListInfo[i]);
     }   
 }
+
 
 const clickCourseList = (e, courseId) => {
     // 특정 코스를 선택했을 때 마커 이미지에 dashed 보더가 생김
@@ -320,7 +319,7 @@ getCourseListFetch().then(function() {// 다른 스크립트 실행
     total_stamp_number.innerHTML = courseListInfo.length
 })
 
-const getCourseListFetch2 = async (course) => {
+const getCourseListFetch2 = async (c, d) => {
     const accessToken = localStorage.getItem("accessToken");
     if(!accessToken) {
         window.location.href = "/login?error=need_login";
@@ -336,10 +335,9 @@ const getCourseListFetch2 = async (course) => {
     const result = await response.json();
     courseListInfo = result;
     
-    allMarkers.forEach((marker) => marker.setMap(null))
+    drawMap(c, d);
     allCourseMarker();
-    /* allCourseMarker();
-    addUserMarker(); */
+    addUserMarker();
     /* makeNavigationHtml(); */
   }
 
@@ -359,8 +357,8 @@ const clickHeartBtn = async (props) => {
     const result = await response1.json();
     const userId = result.user_id;
     const courseId = props;
-    /* currentLatitude = courseListInfo[props-1].course_latitude;
-    currentLongitude = courseListInfo[props-1].course_longitude; */
+    currentLatitude = courseListInfo[props-1].course_latitude;
+    currentLongitude = courseListInfo[props-1].course_longitude;
     if (white) {
         heartBtn.src = "../file/red_heart_btn.png";
         try {
@@ -375,7 +373,7 @@ const clickHeartBtn = async (props) => {
             if (response.status === 200) {
                 // 성공적으로 즐겨찾기를 저장한 경우에 대한 코드
                 console.log("즐겨찾기가 저장되었습니다.");
-                getCourseListFetch2(courseListInfo[props-1]);
+                getCourseListFetch2(currentLatitude, currentLongitude);
             } else {
                 // 오류 처리를 수행할 수 있습니다.
                 console.error("즐겨찾기를 저장하는 중에 오류가 발생했습니다.");
@@ -398,7 +396,7 @@ const clickHeartBtn = async (props) => {
             if (response.status === 200) {
                 // 성공적으로 즐겨찾기를 저장한 경우에 대한 코드
                 console.log("즐겨찾기가 삭제되었습니다.");
-                getCourseListFetch2(courseListInfo[props-1]);
+                getCourseListFetch2(currentLatitude, currentLongitude);
             } else {
                 // 오류 처리를 수행할 수 있습니다.
                 console.error("즐겨찾기를 삭제하는 중에 오류가 발생했습니다.");
