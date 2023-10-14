@@ -1,26 +1,31 @@
 import db from "../config/db"
 
 export const getCourseList = async (request, response) => {
-// 로그인했는지 여부를 판단한다 그래서 유저 id를 가져온다 로그인 안했으면 null
-const userId = request.user ? request.user.user_id : null;
-// 데이터베이스에서 코스 정보와 방문여부를 가져온다.
-const QUERY = `
-    SELECT c.*, uc.users_course_id 
-    FROM course c 
-    LEFT JOIN users_course uc 
-    ON c.course_id = uc.course_id
-    AND uc.user_id = ?`
+  // 로그인했는지 여부를 판단한다 그래서 유저 id를 가져온다 로그인 안했으면 null
+  const userId = request.user ? request.user.user_id : null;
+  // 데이터베이스에서 코스 정보와 방문여부를 가져온다.
+  const QUERY = `
+  SELECT c.*, uc.users_course_id, ucf.id
+  FROM course c 
+  LEFT JOIN users_course uc 
+  ON c.course_id = uc.course_id 
+  AND uc.user_id = ?
+  LEFT JOIN  users_course_favorite ucf
+  ON c.course_id = ucf.course_id 
+  AND ucf.user_id = ?
+  `;
 
-  const courseList = await db.execute(QUERY, [userId]).then((result) => result[0]);
-  
+  const courseList = await db
+      .execute(QUERY, [userId, userId])
+      .then((result) => result[0]);
+
   response.json(courseList);
-}
+};
 
 export const qrCheck = async (request, response) => {
   const userId = request.user.user_id;
 
   const qrInfoData = request.body;
-  console.log(qrInfoData);
 
   // 검증코드 1: 들어온 qr 코드에 해당하는 코스가 있는지 여부
   const QUERY1 = `SELECT * FROM course WHERE course_qr = ?`
@@ -60,6 +65,49 @@ const calculatorDistance = (currentLat, currentLon, targetLat, targetLon) => {
   return Math.sqrt(dLat * dLat + dLon * dLon);
 }
 
-/* 
-    controller => service (중요한 처리들) -> repository
-*/
+export const favorite = async (req, res) => {
+  const { userId, courseId } = req.body;
+  // "users_course_favorite" 테이블에 레코드를 삽입합니다.
+  const connection = await db.getConnection();
+
+  try {
+    await connection.beginTransaction(); // 트랜잭션 시작
+
+    // "users_course_favorite" 테이블에 레코드를 삽입합니다.
+    const sql = "INSERT INTO users_course_favorite (user_id, course_id) VALUES (?, ?)";
+    await connection.execute(sql, [userId, courseId]);
+
+    await connection.commit(); // 트랜잭션 커밋
+    res.status(200).send("즐겨찾기가 저장되었습니다.");
+  } catch (error) {
+    await connection.rollback(); // 트랜잭션 롤백
+    console.error(error);
+    res.status(500).send("즐겨찾기 저장 중 오류가 발생했습니다.");
+  } finally {
+    connection.release(); // 연결 해제
+  }
+};
+
+export const removeFavorite = async (req, res) => {
+  const { userId, courseId } = req.body;
+  // Delete the record from the "users_course_favorite" table.
+  const connection = await db.getConnection();
+
+  try {
+    await connection.beginTransaction(); // 트랜잭션 시작
+
+    // "users_course_favorite" 테이블에서 레코드 삭제
+    const sql = "DELETE FROM users_course_favorite WHERE user_id = ? AND course_id = ?";
+    await connection.execute(sql, [userId, courseId]);
+
+    await connection.commit(); // 트랜잭션 커밋
+    res.status(200).send("즐겨찾기가 삭제되었습니다.");
+  } catch (error) {
+    await connection.rollback(); // 트랜잭션 롤백
+    console.error(error);
+    res.status(500).send("즐겨찾기 삭제 중 오류가 발생했습니다.");
+  } finally {
+    connection.release(); // 연결 해제
+  }
+};
+

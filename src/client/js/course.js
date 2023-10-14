@@ -4,7 +4,8 @@ let markers = [];
 let isMapDrawn = false;
 let userLatitude;
 let userLongitude;
-
+let currentLatitude;
+let currentLongitude;
 
 // TODO 추후 사라질 수 있음
 let courseListInfo = [];
@@ -52,12 +53,17 @@ const panTo = (latitude, longitude) => {
 const addCourseMarker = (course) => {
     let markerImage = "/file/map_not_done.png";
     let markerSize = new kakao.maps.Size(36);
+
+    if(course.id) {
+        markerImage = "/file/map_favorite.png";
+        markerSize = new kakao.maps.Size(36);
+    }
     
     if(course.users_course_id) {
         markerImage = "/file/map_complete.png";
         markerSize = new kakao.maps.Size(36);
         
-    }
+    } 
 
     const image = new kakao.maps.MarkerImage(markerImage, markerSize);
     const position = new kakao.maps.LatLng(course.course_latitude, course.course_longitude);
@@ -213,6 +219,8 @@ const configurationLocationWatch = () => {
     }
 }
 
+
+
 const makeNavigationHtml = () => {
     const courseWrap = document.getElementById("course-wrap");
     // console.log(courseWrap)
@@ -235,10 +243,9 @@ const makeNavigationHtml = () => {
                             <div class="title">${courseListInfo[i].course_name}</div>
                             <div class="sub_text">${courseListInfo[i].course_brief_description}</div>
                         </div>
-                    </div>
-                    <img src="../file/white_heart_btn.png" class="heart-btn" alt="" onClick="clickHeartBtn(event)">
-                    <a href="/detail/${i}"><div class="view-more-btn">자세히보기</div></a>
-                  </li>`
+                    </div>`;
+        html += `<img src='${courseListInfo[i].id? "../file/red_heart_btn.png" : "../file/white_heart_btn.png"}' class="heart-btn" alt="" onClick="clickHeartBtn(${courseListInfo[i].course_id})"></img>`;    
+        html += `<a href="/detail/${i}"><div class="view-more-btn">자세히보기</div></a></li>`
     }
     // console.log(courseListInfo);
     html += `<div class="course-popup-bar"><img src="../file/course_popup_bar.png"></div>`
@@ -272,8 +279,9 @@ const getCourseListFetch = async () => {
     courseListInfo = result;
     
     afterGetCourseList();
-    makeNavigationHtml();
+    /* makeNavigationHtml(); */
   }
+
 
 // 지도가 그려짐과 동시에 ul 태그 안에 코스가 다 담기고 나면 ul 태그 높이를 이용해 지도 높이를 계산함
 getCourseListFetch().then(function() {// 다른 스크립트 실행
@@ -311,3 +319,90 @@ getCourseListFetch().then(function() {// 다른 스크립트 실행
     total_stamp_number.innerHTML = courseListInfo.length
 })
 
+const getCourseListFetch2 = async (c, d) => {
+    const accessToken = localStorage.getItem("accessToken");
+    if(!accessToken) {
+        window.location.href = "/login?error=need_login";
+    }
+    const response = await fetch("/api/courses", {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    });
+    if(response.status === 401) {
+        return window.location.href = "/login?error=need_login"
+    }
+    const result = await response.json();
+    courseListInfo = result;
+    
+    drawMap(c, d);
+    allCourseMarker();
+    addUserMarker();
+    /* makeNavigationHtml(); */
+  }
+
+const clickHeartBtn = async (props) => {
+    const heartBtn = document.querySelectorAll(".heart-btn")[props-1];
+    console.log(heartBtn.src)
+    const white = heartBtn.src.includes("white");
+    const accessToken = localStorage.getItem("accessToken");
+    const response1 = await fetch("/api/token/check", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${accessToken}`,
+        },
+    });
+    const result = await response1.json();
+    const userId = result.user_id;
+    const courseId = props;
+    currentLatitude = courseListInfo[props-1].course_latitude;
+    currentLongitude = courseListInfo[props-1].course_longitude;
+    if (white) {
+        heartBtn.src = "../file/red_heart_btn.png";
+        try {
+            // 버튼 클릭 시 서버에 POST 요청을 보냅니다.
+            const response = await fetch("/api/favorite", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userId, courseId }),
+            });
+            if (response.status === 200) {
+                // 성공적으로 즐겨찾기를 저장한 경우에 대한 코드
+                console.log("즐겨찾기가 저장되었습니다.");
+                getCourseListFetch2(currentLatitude, currentLongitude);
+            } else {
+                // 오류 처리를 수행할 수 있습니다.
+                console.error("즐겨찾기를 저장하는 중에 오류가 발생했습니다.");
+            }
+        } catch (error) {
+            console.error("네트워크 오류:", error);
+        }
+    } else {
+        heartBtn.src = "../file/white_heart_btn.png";
+        try {
+            // 버튼 클릭 시 서버에 POST 요청을 보냅니다.
+            const response = await fetch("/api/deleteFavorite", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userId, courseId }),
+            });
+
+            if (response.status === 200) {
+                // 성공적으로 즐겨찾기를 저장한 경우에 대한 코드
+                console.log("즐겨찾기가 삭제되었습니다.");
+                getCourseListFetch2(currentLatitude, currentLongitude);
+            } else {
+                // 오류 처리를 수행할 수 있습니다.
+                console.error("즐겨찾기를 삭제하는 중에 오류가 발생했습니다.");
+            }
+        } catch (error) {
+            console.error("네트워크 오류:", error);
+        }
+    }
+}

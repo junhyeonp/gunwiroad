@@ -2,7 +2,7 @@
 import express from "express";
 import passport from "passport"
 import jwt from "jsonwebtoken";
-import { favorite, getCourseList, qrCheck, removeFavorite } from "../controller/courseController";
+import { getCourseList, qrCheck } from "../controller/courseController";
 import { authMe, join, login } from "../controller/userController";
 import { handleKakaoLogin, isAuth } from "../middleware/auth";
 import { Strategy as KakaoStrategy } from "passport-kakao"
@@ -11,8 +11,6 @@ const apiRouter = express.Router();
 
 apiRouter.get("/courses", isAuth, getCourseList)
 apiRouter.post("/courses", isAuth, qrCheck)
-apiRouter.post("/favorite", favorite);
-apiRouter.post("/deleteFavorite", removeFavorite);
 
 // 회원가입
 apiRouter.post("/join", join )
