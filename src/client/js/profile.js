@@ -18,7 +18,8 @@ const getCourseListFetch = async() => {
 getCourseListFetch().then(() => {
     const couponBox = document.querySelector('.coupon-box')
     const couponAmount = document.querySelector('.coupon-amount')
-    const levelNum = document.querySelector('.level-num')
+    const favoriteNum = document.querySelector('.number')
+    const favoriteBox = document.querySelector('.favorite-box')
 
     let completedStamps = courseListInfo.filter(function(obj) {
         return obj.users_course_id !== null;
@@ -42,6 +43,23 @@ getCourseListFetch().then(() => {
     
     couponAmount.innerHTML = `${ calculatedCouponAmount }개`
     /* levelNum.innerHTML = stampQuantity */
+
+    /* 찜 */
+    let favoriteLists = courseListInfo.filter(function(obj) {
+        return obj.id !== null;
+    });
+    /* course_name, users_course_id, course_id */
+    let favoriteQuantity = favoriteLists.length;
+    favoriteNum.innerHTML = `${ favoriteQuantity }개`
+    console.log(favoriteLists)
+    favoriteLists.forEach((favoriteItem) => {
+        favoriteBox.classList.add('show');
+        favoriteBox.innerHTML += `<li><a href="/detail/${favoriteItem.course_id - 1}">
+            ${favoriteItem.users_course_id? "<img class='complete-stamp' src='/file/complete.png'>" : ""}
+            <img class='course-img' src='/file/course_thumbnail_${favoriteItem.course_id - 1}.png'>
+            <div class='course-name'>${favoriteItem.course_name}</div>
+        </a></li>`
+    })
 })
 
 const logout = () => {
