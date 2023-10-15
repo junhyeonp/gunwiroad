@@ -13,7 +13,7 @@ header.border_bottom { border-bottom: 1px solid rgba(0, 0, 0, 0.2);}
 header img { width: 180px; }
 .catchphrase { margin-top: 65px; margin-bottom: 20px;}
 .catchphrase .main_text { line-height: 1.2; font-size: 32px; font-weight: bold; margin-right: 20px;}
-.about_app_btn { display: flex; width: 270px; justify-content: space-between; align-items: center; padding: 10px; font-size: 20px; font-weight: bold; background-color: #262014; opacity: 0.85; border-radius: 100px; margin: 30px 0 30px auto; }
+.about_app_btn { animation: floatBtn 3s infinite; display: flex; width: 270px; justify-content: space-between; align-items: center; padding: 10px; font-size: 20px; font-weight: bold; background-color: #262014; opacity: 0.85; border-radius: 100px; margin: 30px 0 30px auto; }
 .about_app_btn img { width: 50px; margin-right: 10px; }
 .about_app_btn div img { width: 10px; margin-left: 10px; }
 .about_app_btn div { display: flex; align-items: center; }
@@ -33,6 +33,10 @@ header img { width: 180px; }
 .table_row.column_titles { background-color: #D9D9D9; color: #000;  padding: 5px 0; font-size: 14px;}
 .table_row .level { font-size: 14px; }
 .table_row .price { font-weight: bold; }
+@keyframes floatBtn { 0% { box-shadow: 0 5px 5px 0 rgba(0,0,0,.4); -webkit-transform: translatey(0); transform: translatey(0);} 
+                      50% { box-shadow: 0 5px 15px 0 rgba(0,0,0,.2); -webkit-transform: translatey(-10px); transform: translatey(-10px);}
+                      100% { box-shadow: 0 5px 5px 0 rgba(0,0,0,.4); -webkit-transform: translatey(0); transform: translatey(0);}
+                    }
 
 /* login */
 .header-black { background-color: #000; }
