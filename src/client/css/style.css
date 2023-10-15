@@ -107,7 +107,6 @@ bsolute
 .course-description { padding: 20px 20px 160px; line-height: 1.5; }
 .previous-page { font-weight: bold; cursor: pointer; display: flex; align-items: center; position: absolute; bottom: 100px; left: 30px; }
 .previous-page img { width: 10px; margin-right: 5px; }
-.total-stamp-number { color: rgba(256, 256, 256, 0.7) }
 .stamp-number { font-weight: bold; }
 
 /* qr */
