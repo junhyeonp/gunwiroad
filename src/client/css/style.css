@@ -164,7 +164,7 @@ img.qr-box { width: 85%; position: absolute; max-width: 550px;}
 .favorite-box li:last-child { margin-right: 0; }
 .favorite-box li a { position: absolute; left: 0; top: 0;}
 .favorite-box img.complete-stamp { z-index: 9; opacity: 0.8; width: 90%; position: absolute; top: -25%; left: 50%; transform: translateX(-50%);  }
-.favorite-box .course-img { width: 100%; filter: brightness(0.8); }
+.favorite-box .course-img { width: 100%; filter: brightness(0.8); border-radius: 50%; box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.4); }
 .favorite-box .course-name { text-align: center; color: white; position: absolute; left: 50%; top: 50%; width: 100%; transform: translate(-50%, -50%); font-weight: bold; font-size: 14px; }
 
 /* users */
