@@ -10,6 +10,8 @@ let allMarkers = [];
 
 // TODO 추후 사라질 수 있음
 let courseListInfo = [];
+let completedCourse = [];
+let notCompletedCourse = [];
 let clickCourseID = 0;
 
 // 지도 그리는 함수
@@ -277,10 +279,19 @@ const getCourseListFetch = async () => {
         return window.location.href = "/login?error=need_login"
     }
     const result = await response.json();
-    courseListInfo = result;
-    
+    completedCourse = [];
+    notCompletedCourse = [];
+    result.forEach((course) => {
+        if(course.users_course_id) {
+            completedCourse.push(course)
+        } else {
+            notCompletedCourse.push(course)
+        }
+    })
+    courseListInfo = [...notCompletedCourse, ...completedCourse]
+    console.log(courseListInfo)
     afterGetCourseList();
-    makeNavigationHtml();
+    /* makeNavigationHtml(); */
   }
 
 
@@ -339,9 +350,19 @@ const getCourseListFetch2 = async (course) => {
         return window.location.href = "/login?error=need_login"
     }
     const result = await response.json();
+    /* courseListInfo = result; */
     console.log(result)
-    courseListInfo = result;
-    
+    completedCourse = [];
+    notCompletedCourse = [];
+    result.forEach((course) => {
+        if(course.users_course_id) {
+            completedCourse.push(course)
+        } else {
+            notCompletedCourse.push(course)
+        }
+    })
+    courseListInfo = [...notCompletedCourse, ...completedCourse]
+    console.log(courseListInfo)
     allMarkers.forEach((marker) => marker.setMap(null))
     allCourseMarker();
     /* allCourseMarker();
