@@ -103,7 +103,6 @@ bsolute
 .course-description { padding: 20px 20px 160px;}
 .previous-page { font-weight: bold; cursor: pointer; display: flex; align-items: center; position: absolute; bottom: 100px; left: 30px; }
 .previous-page img { width: 10px; margin-right: 5px; }
-.stamp-number { color: gold; }
 
 /* qr */
 .qr-container { width: 100%; padding-top: 30px;  }
@@ -112,6 +111,7 @@ bsolute
 .canvas-wrap { /* padding-top: 50px; */  min-height: calc(var(--vh, 1vh)*100 - 145px); display: flex; justify-content: center; align-items: center; }
 #canvas { max-width: 500px; }
 img.qr-box { width: 85%; position: absolute; max-width: 550px;}
+.total-stamp-number { color: rgba(256, 256, 256, 0.7) }
 
 /* stamp */
 .stamp-page { position: absolute; padding-bottom: 100px; left: 0; top: 0; width: 100%; min-height: calc(var(--vh, 1vh)*100); background: url(../file/stamp_page_bg.png); background-size: cover; padding-top: 80px; }
