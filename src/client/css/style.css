@@ -103,6 +103,7 @@ bsolute
 .course-description { padding: 20px 20px 160px;}
 .previous-page { font-weight: bold; cursor: pointer; display: flex; align-items: center; position: absolute; bottom: 100px; left: 30px; }
 .previous-page img { width: 10px; margin-right: 5px; }
+.stamp-number { color: gold; }
 
 /* qr */
 .qr-container { width: 100%; padding-top: 30px;  }
