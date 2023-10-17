@@ -11,7 +11,7 @@ export const join = async (request, response) => {
     const user = await db.execute(QUERY1, [joinData.userId]).then((result) => result[0][0]);
 
     if(user) {
-        return response.status(400).json({ status: "ID 중복" })
+        return response.status(400).json({ status: "이미 존재하는 ID입니다." })
     }
 
     // 비밀번호 암호화

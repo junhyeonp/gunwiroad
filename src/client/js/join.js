@@ -1,6 +1,7 @@
 const joinBtn = document.getElementById('joinBtn');
 const userIdInput = document.getElementById('userId');
 const userPasswordInput = document.getElementById('userPassword');
+const userPasswordCheckInput = document.getElementById('userPasswordDoubleCheck');
 const userNameInput = document.getElementById('userName');
 
 const msgAlert = (position, message, type) => {
@@ -16,10 +17,15 @@ const msgAlert = (position, message, type) => {
 const joinFetch = async () => {
     const userId = userIdInput.value;
     const userPassword = userPasswordInput.value;
+    const userPasswordCheck = userPasswordCheckInput.value;
     const userName = userNameInput.value;
 
     if(!userId || !userPassword || !userName) {
-        return msgAlert("bottom", "모든 필드를 채워주세요", "error");
+        return msgAlert("bottom", "모든 필드를 채워주세요.", "error");
+    }
+
+    if(userPassword !== userPasswordCheck) {
+        return msgAlert("bottom", "비밀번호가 다릅니다.", "error");
     }
 
     const response = await fetch("/api/join", {
