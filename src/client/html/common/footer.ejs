@@ -21,8 +21,8 @@
             </a>
         </li>
         <li>
-            <a href="/profile" class="menu-link">
-                <img src="../../file/myinfo_icon.png" alt="">
+            <a class="menu-link myinfo-or-login-link" href="/profile" >
+                <img class="myinfo-or-login-icon" src="../../file/myinfo_icon.png" alt="">
             </a>
         </li>
     </ul>
@@ -58,6 +58,19 @@ window.addEventListener('load', () => {
 
     history.scrollRestoration = "auto";
 //현재 위치를 기억하여 새로고침시 그자리를 유지한다.
+</script>
+
+<script>
+    const accessToken = localStorage.getItem("accessToken");
+    const myinfoOrLoginIcon = document.querySelector('.myinfo-or-login-icon')
+    const myinfoOrLoginLink = document.querySelector('.myinfo-or-login-link')
+    if(accessToken) {
+        myinfoOrLoginIcon.src = "../../file/myinfo_icon.png"
+        myinfoOrLoginLink.href = "/profile"
+    } else {
+        myinfoOrLoginIcon.src = "../../file/login_icon.png"
+        myinfoOrLoginLink.href = "/login"
+    }
 </script>
 </body>
 </html>
